@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Users/Driver/Documents/NetBeansProjects/LokiRobot/src/edu/wpi/first/wpilibj/templates/LokiRobot.java</file>
+        <file>file:/C:/Users/Driver/Documents/NetBeansProjects/LokiRobot/src/edu/wpi/first/wpilibj/templates/subsystems/DriveSystem.java</file>
+        <file>file:/C:/Users/Driver/Documents/NetBeansProjects/LokiRobot/src/edu/wpi/first/wpilibj/templates/commands/AutonomousCommand.java</file>
+        <file>file:/C:/Users/Driver/Documents/NetBeansProjects/LokiRobot/src/edu/wpi/first/wpilibj/templates/commands/AutoDriveCommand.java</file>
+        <file>file:/C:/Users/Driver/Documents/NetBeansProjects/LokiRobot/src/edu/wpi/first/wpilibj/templates/commands/CommandBase.java</file>
+        <file>file:/C:/Users/Driver/Documents/NetBeansProjects/LokiRobot/src/edu/wpi/first/wpilibj/templates/commands/TeleDriveCommand.java</file>
+    </open-files>
+    <preferences xmlns="http://www.netbeans.org/ns/auxiliary-configuration-preferences/1">
+        <module name="org-nbheaven-sqe-codedefects-core">
+            <property name="annotation-provider-findbugs" value="true"/>
+            <property name="annotation-provider-checkstyle" value="false"/>
+            <property name="annotation-provider-pmd" value="false"/>
+        </module>
+    </preferences>
+</project-private>
