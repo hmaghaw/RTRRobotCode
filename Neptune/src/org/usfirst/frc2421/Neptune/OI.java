@@ -91,7 +91,7 @@ public class OI {
 
         SmartDashboard.putData("shooterAngleUp", new shooterAngleUp());
 
-        SmartDashboard.putData("shooterAngleDown", new shooterAngleDown());
+        SmartDashboard.putData("shooterAngleDown", new shooterAngleManipulation());
 
         SmartDashboard.putData("moveForward", new moveForward());
 

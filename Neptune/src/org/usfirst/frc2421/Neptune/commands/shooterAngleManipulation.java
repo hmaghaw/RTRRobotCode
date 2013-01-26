@@ -17,9 +17,9 @@ import org.usfirst.frc2421.Neptune.Robot;
 /**
  *
  */
-public class  shooterAngleDown extends Command {
+public class  shooterAngleManipulation extends Command {
 
-    public shooterAngleDown() {
+    public shooterAngleManipulation() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -33,6 +33,8 @@ public class  shooterAngleDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        double targetAngle = 0;//vision dode needed ro get target height
+        Robot.shootSystem.setShooterAngle(targetAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
