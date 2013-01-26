@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2421.Neptune.subsystems;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.commands.*;
 import edu.wpi.first.wpilibj.can.*;
