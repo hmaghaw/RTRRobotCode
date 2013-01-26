@@ -33,12 +33,13 @@ public class  TeleDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        drive = Robot.driveSystem.getRobotDrive();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        drive.arcadeDrive(Robot.oi.driveStick);
+        double x = Robot.oi.driveStick.getX();
+        double y = Robot.oi.driveStick.getY();
+        Robot.driveSystem.runMotors(y/(x+1), y/(x-1));
     }
 
     // Make this return true when this Command no longer needs to run execute()
