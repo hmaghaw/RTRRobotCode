@@ -11,14 +11,17 @@
 
 package org.usfirst.frc2421.Neptune.commands;
 
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2421.Neptune.OI;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
  *
  */
 public class  TeleDrive extends Command {
-
+    RobotDrive drive;
+    
     public TeleDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,11 +33,12 @@ public class  TeleDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        drive = Robot.driveSystem.getRobotDrive();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+        drive.arcadeDrive(Robot.oi.driveStick);
     }
 
     // Make this return true when this Command no longer needs to run execute()
