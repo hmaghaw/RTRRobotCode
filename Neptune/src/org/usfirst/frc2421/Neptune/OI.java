@@ -89,8 +89,6 @@ public class OI {
 
         SmartDashboard.putData("shootDisk", new shootDisk());
 
-        SmartDashboard.putData("shooterAngleUp", new shooterAngleUp());
-
         SmartDashboard.putData("shooterAngleDown", new shooterAngleManipulation());
 
         SmartDashboard.putData("moveForward", new moveForward());

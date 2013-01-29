@@ -29,6 +29,7 @@ public class  shootDisk extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        Robot.shootSystem.startShooter(1, 1.25);
     }
 
     // Called repeatedly when this Command is scheduled to run
