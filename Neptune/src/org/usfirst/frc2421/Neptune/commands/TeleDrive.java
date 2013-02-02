@@ -43,36 +43,50 @@ public class  TeleDrive extends Command {
 
         double lMotor = 0.0;
         double rMotor = 0.0;
-
-        if (yValue >= Math.abs(xValue)) {
-            if (xValue >= 0) {
+        
+        /**
+         * 
+         * Following code translates the X and Y values received from the joystick into values for the left
+         * and right motors. It is broken into octants (8 slices, like a pizza). X and Y range from -1 to 1.
+         * 
+         *   \ | /    Here's a visual for you.
+         *  -- + --   
+         *   / | \    Looks a bit like an "X" and a "+" crossed paths.
+         * 
+         * This octant method is used because the "X" separates the modifiers (Y value for the top and bottom, and 
+         * the X value for the eft and right sections), while the "+" separates the positive and negative values.
+         * 
+         */ 
+        
+        if (yValue >= Math.abs(xValue)) {             // if the ordered pair (op) is in the upper "\/" :
+            if (xValue >= 0) {                        // right half
                 lMotor = yValue;
                 rMotor = yValue - xValue;
-            } else {
+            } else {                                  // left half
                 lMotor = yValue + xValue;
                 rMotor = yValue;
             }
-        } else if (xValue >= Math.abs(yValue)) {
-            if (yValue >= 0) {
+        } else if (xValue >= Math.abs(yValue)) {      // if the op is in the right-facing "<" :
+            if (yValue >= 0) {                        // upper half
                 lMotor = xValue;
                 rMotor = yValue - xValue;
-            } else {
+            } else {                                  // lower half
                 lMotor = -xValue;
                 rMotor = -xValue - yValue;
             }
-        } else if (yValue <= -Math.abs(xValue)) {
-            if (xValue >= 0) {
+        } else if (yValue <= -Math.abs(xValue)) {     // if the op is in the lower, upside-down "\/" :
+            if (xValue >= 0) {                        // right half
                 lMotor = yValue;
                 rMotor = yValue + xValue;
-            } else {
+            } else {                                  // left half
                 lMotor = yValue - xValue;
                 rMotor = yValue;
             }
-        } else {
-            if (yValue >= 0) {
+        } else {                                      // if the op is in the remaining, left-facing ">" :
+            if (yValue >= 0) {                        // upper half
                 lMotor = xValue + yValue;
                 rMotor = -xValue;
-            } else {
+            } else {                                  // lower half
                 lMotor = xValue;
                 rMotor = yValue - xValue;
             }
