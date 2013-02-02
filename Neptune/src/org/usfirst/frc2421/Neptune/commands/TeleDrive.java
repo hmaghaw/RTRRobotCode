@@ -13,6 +13,7 @@ package org.usfirst.frc2421.Neptune.commands;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2421.Neptune.OI;
 import org.usfirst.frc2421.Neptune.Robot;
 
@@ -37,9 +38,49 @@ public class  TeleDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double x = Robot.oi.driveStick.getX();
-        double y = Robot.oi.driveStick.getY();
-        Robot.driveSystem.runMotors(y/(x+1), y/(x-1));
+        double xValue = Robot.oi.driveStick.getX();
+        double yValue = Robot.oi.driveStick.getY();
+
+        double lMotor = 0.0;
+        double rMotor = 0.0;
+
+        if (yValue >= Math.abs(xValue)) {
+            if (xValue >= 0) {
+                lMotor = yValue;
+                rMotor = yValue - xValue;
+            } else {
+                lMotor = yValue + xValue;
+                rMotor = yValue;
+            }
+        } else if (xValue >= Math.abs(yValue)) {
+            if (yValue >= 0) {
+                lMotor = xValue;
+                rMotor = yValue - xValue;
+            } else {
+                lMotor = -xValue;
+                rMotor = -xValue - yValue;
+            }
+        } else if (yValue <= -Math.abs(xValue)) {
+            if (xValue >= 0) {
+                lMotor = yValue;
+                rMotor = yValue + xValue;
+            } else {
+                lMotor = yValue - xValue;
+                rMotor = yValue;
+            }
+        } else {
+            if (yValue >= 0) {
+                lMotor = xValue + yValue;
+                rMotor = -xValue;
+            } else {
+                lMotor = xValue;
+                rMotor = yValue - xValue;
+            }
+        }
+        
+        Robot.driveSystem.runMotors(lMotor, rMotor);
+        SmartDashboard.putNumber("Left Motor", lMotor);
+        SmartDashboard.putNumber("Right Motor", rMotor);
     }
 
     // Make this return true when this Command no longer needs to run execute()
