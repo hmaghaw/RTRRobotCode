@@ -38,8 +38,8 @@ public class  TeleDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double xValue = Robot.oi.driveStick.getX();
-        double yValue = Robot.oi.driveStick.getY();
+        double xValue = Robot.oi.driveStick.getY();
+        double yValue = Robot.oi.driveStick.getX();
 
         double lMotor = 0.0;
         double rMotor = 0.0;
