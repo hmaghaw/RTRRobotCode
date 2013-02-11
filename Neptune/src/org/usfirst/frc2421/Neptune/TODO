@@ -1,0 +1,16 @@
+Todo and Sundry
+
+ - Ensure variable, function, and class names are clear and precise.
+ - Catch all possible errors cleanly, safely, and in such a way as to prevent too 
+much damage
+ - Give classes descriptions
+ - Any functions longer than 4-5 lines must have a description
+ - Functions longer than 10 lines should have comments throughout their body,
+explaining their actions and inner workings
+ - Business logic and calculations should be as separate as possible, without fragmenting the code.
+ - Avoid "magic variables", that is, variables such as numbers which can greatly
+effect the running of a function.Instead of a simple number placed in a 
+setSpeed() function, consider making it a constant.
+ - Once a logger is present (And their should be one!) make sure to have 
+log statements wherever any major actions are done, such as when interacting 
+with physical robot parts.
