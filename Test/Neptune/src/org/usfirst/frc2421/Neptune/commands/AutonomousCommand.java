@@ -17,9 +17,9 @@ import org.usfirst.frc2421.Neptune.Robot;
 /**
  *
  */
-public class  shootDisk extends Command {
+public class  AutonomousCommand extends Command {
 
-    public shootDisk() {
+    public AutonomousCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -29,7 +29,6 @@ public class  shootDisk extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.shootSystem.startShooter(1, 1.25);
     }
 
     // Called repeatedly when this Command is scheduled to run

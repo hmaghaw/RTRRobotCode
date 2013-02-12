@@ -17,9 +17,9 @@ import org.usfirst.frc2421.Neptune.Robot;
 /**
  *
  */
-public class  shootDisk extends Command {
+public class  shooterAngleManipulation extends Command {
 
-    public shootDisk() {
+    public shooterAngleManipulation() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -29,11 +29,12 @@ public class  shootDisk extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.shootSystem.startShooter(1, 1.25);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        double targetAngle = 0;//vision dode needed ro get target height
+        Robot.shootSystem.setShooterAngle(targetAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()

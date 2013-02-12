@@ -37,6 +37,11 @@ public class OI {
         
         brake = new JoystickButton(driveStick, 1);
         brake.whenPressed(new drive());
+        
+        countDecrement = new JoystickButton(shooterStick, 4);
+        countDecrement.whenPressed(new decreaseCount());
+        getFrisbee = new JoystickButton(shooterStick, 5);
+        getFrisbee.whenPressed(new collect());
 
 
         // SmartDashboard Buttons
