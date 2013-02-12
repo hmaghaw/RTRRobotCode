@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2421.Neptune.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,7 +24,6 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 public class ShootSystem extends Subsystem {
     CANJaguar wheel1 = RobotMap.shootSystemWheel1;
     CANJaguar wheel2 = RobotMap.shootSystemWheel2;
-    Servo angleMotor = RobotMap.shootSystemAngleMotor;
 
     
     // Put methods for controlling this subsystem
