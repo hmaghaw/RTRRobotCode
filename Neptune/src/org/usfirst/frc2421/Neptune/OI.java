@@ -14,7 +14,7 @@ public class OI {
     public JoystickButton brake, speedToggle;
     
     public Joystick shooterStick;
-    public JoystickButton halt, loadFrisbee, shoot;
+    public JoystickButton halt, loadFrisbee, shoot, countDecrement, getFrisbee;
 
     public OI() {
         // Shooting Control Setup

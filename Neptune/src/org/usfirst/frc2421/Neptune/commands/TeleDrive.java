@@ -34,7 +34,6 @@ public class  TeleDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        drive = Robot.driveSystem.getRobotDrive();
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -5,13 +5,14 @@
 package org.usfirst.frc2421.Neptune.commands;
 
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
  *
  * @author Kal
  */
-public class collect {
+public class collect extends Command{
     public boolean on = false;
     
     public collect() {
@@ -27,13 +28,23 @@ public class collect {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() throws CANTimeoutException {
+    protected void execute() {
         
         on = !on;
         if(on) {
-            Robot.collectionSystem.motor(1.0); }
+            try {
+                Robot.collectionSystem.goMotor();
+            } catch (CANTimeoutException ex) {
+                ex.printStackTrace();
+            }
+ }
         else {
-            Robot.collectionSystem.motor(0.0); }
+            try {
+                Robot.collectionSystem.stopMotor();
+            } catch (CANTimeoutException ex) {
+                ex.printStackTrace();
+            }
+ }
     }
 
     // Make this return true when this Command no longer needs to run execute()
