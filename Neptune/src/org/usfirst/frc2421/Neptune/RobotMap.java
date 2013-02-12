@@ -18,7 +18,8 @@ public class RobotMap {
     
     public static CANJaguar shootSystemWheel1;
     public static CANJaguar shootSystemWheel2;
-    public static Servo shootSystemAngleMotor;
+    public static CANJaguar shootSystemAngleOfFire;
+    public static AnalogChannel shootSystemMeasureAngleOfFire;
     
     public static CANJaguar climbSystemClimbMotor1;
     public static Ultrasonic climbSystemUltrasonic;
@@ -63,10 +64,14 @@ public class RobotMap {
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
+        try { 
+            shootSystemAngleOfFire = new CANJaguar(7);
+        } catch (CANTimeoutException ex) {
+            ex.printStackTrace();
+        }
 
-
-        shootSystemAngleMotor = new Servo(1, 1);
-        LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemAngleMotor);
+        shootSystemMeasureAngleOfFire = new AnalogChannel(10);
+        LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemMeasureAngleOfFire);
 
         try {
             climbSystemClimbMotor1 = new CANJaguar(7);

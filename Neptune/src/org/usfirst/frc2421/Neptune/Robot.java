@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
 import org.usfirst.frc2421.Neptune.commands.TeleopCommand;
+import org.usfirst.frc2421.Neptune.commands.AngleManipulation;
 import org.usfirst.frc2421.Neptune.subsystems.*;
 
 /**
@@ -19,6 +20,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command teleopCommand;
+    Command angleManipulation;
     public static OI oi;
     public static DriveSystem driveSystem;
     public static CameraSystem cameraSystem;
@@ -51,6 +53,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousCommand();
         teleopCommand = new TeleopCommand();
+        angleManipulation = new AngleManipulation();
     }
 
     public void autonomousInit() {
@@ -88,6 +91,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Scheduler.getInstance().add(angleManipulation);
     }
 
     /**
