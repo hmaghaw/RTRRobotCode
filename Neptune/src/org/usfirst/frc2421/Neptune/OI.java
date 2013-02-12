@@ -13,21 +13,20 @@ public class OI {
     public Joystick driveStick;
     public JoystickButton brake, speedToggle;
     
-    public Joystick shooterStick;
-    public JoystickButton halt, loadFrisbee, shoot, countDecrement, getFrisbee;
-
+    public Joystick shooterStick = new Joystick(2);
+    public JoystickButton shootActivate, shootDeactivate, shoot, speedDecreace, speedIcreace;
+    
+    private int shooterPowerUpButton = 4;
+    private int shooterPowerDownButton = 3;
+    
     public OI() {
         // Shooting Control Setup
         shooterStick = new Joystick(2);
         
-        shoot = new JoystickButton(shooterStick, 1);
-        shoot.whileHeld(new shootDisk());
-        
-        loadFrisbee = new JoystickButton(shooterStick, 1);
-        loadFrisbee.whileHeld(new brushToggle());
-        
-        halt = new JoystickButton(shooterStick, 1);
-        halt.whileHeld(new brushToggle());
+        shootDeactivate = new JoystickButton(shooterStick, 2);
+        shootDeactivate.whenPressed(new ShooterEnginesStop());
+        shootActivate = new JoystickButton(shooterStick, 1);
+        shootActivate.whenPressed(new shootDisk());
         
         // Drive Control Setup
         driveStick = new Joystick(1);
@@ -37,19 +36,12 @@ public class OI {
         
         brake = new JoystickButton(driveStick, 1);
         brake.whenPressed(new drive());
-        
-        countDecrement = new JoystickButton(shooterStick, 4);
-        countDecrement.whenPressed(new decreaseCount());
-        getFrisbee = new JoystickButton(shooterStick, 5);
-        getFrisbee.whenPressed(new collect());
 
 
         // SmartDashboard Buttons
         // TODO Verify what data actually needs to be sent
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("shootDisk", new shootDisk());
-        SmartDashboard.putData("shooterAngleUp", new shooterAngleUp());
-        SmartDashboard.putData("shooterAngleDown", new shooterAngleDown());
         SmartDashboard.putData("moveForward", new moveForward());
         SmartDashboard.putData("moveBack", new moveBack());
         SmartDashboard.putData("turnLeft", new turnLeft());
