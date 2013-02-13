@@ -6,8 +6,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
 import org.usfirst.frc2421.Neptune.commands.TeleopCommand;
-import org.usfirst.frc2421.Neptune.commands.collect;
-import org.usfirst.frc2421.Neptune.subsystems.*;
+import org.usfirst.frc2421.Neptune.commands.collection.collect;
+import org.usfirst.frc2421.Neptune.subsystems.CameraSystem;
+import org.usfirst.frc2421.Neptune.subsystems.CollectionSystem;
+import org.usfirst.frc2421.Neptune.subsystems.DriveSystem;
+import org.usfirst.frc2421.Neptune.subsystems.ShootSystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,14 +23,11 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command teleopCommand;
-    Command collect;
     public static OI oi;
     public static DriveSystem driveSystem;
     public static CameraSystem cameraSystem;
     public static ShootSystem shootSystem;
-    public static ClimbSystem climbSystem;
     public static CollectionSystem collectionSystem;
-    public static TipSystem tipSystem;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,10 +39,7 @@ public class Robot extends IterativeRobot {
         driveSystem = new DriveSystem();
         cameraSystem = new CameraSystem();
         shootSystem = new ShootSystem();
-        climbSystem = new ClimbSystem();
-        collectionSystem = new CollectionSystem();
-        tipSystem = new TipSystem();
-        
+        collectionSystem = new CollectionSystem();  
 
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from
@@ -54,7 +51,6 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousCommand();
         teleopCommand = new TeleopCommand();
-        collect = new collect();
     }
 
     public void autonomousInit() {
@@ -85,7 +81,6 @@ public class Robot extends IterativeRobot {
         if (teleopCommand != null) {
             teleopCommand.start();
         }
-        collect.start();
     }
 
     /**
@@ -93,7 +88,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        Scheduler.getInstance().add(angleManipulation);
     }
 
     /**

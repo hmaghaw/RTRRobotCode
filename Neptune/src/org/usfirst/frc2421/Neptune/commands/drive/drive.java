@@ -1,14 +1,13 @@
-package org.usfirst.frc2421.Neptune.commands;
+package org.usfirst.frc2421.Neptune.commands.drive;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * This command should launch all other autonomous commands.
+ *
  */
-public class  AutonomousCommand extends Command {
-    private boolean finished = false;
+public class  brake extends Command {
 
-    public AutonomousCommand() {
+    public brake() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -23,7 +22,7 @@ public class  AutonomousCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;
+        return false;
     }
 
     // Called once after isFinished returns true
