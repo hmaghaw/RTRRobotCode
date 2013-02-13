@@ -9,12 +9,17 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 
 
 /**
- * TODO Description
+ * This subsystem is used to control the parts of the robot which pick up 
+ * frisbees, store them, and load them into the shooter
  */
 public class CollectionSystem extends Subsystem {
-    DigitalInput limitSwitch2 = RobotMap.pickupSystemLimitSwitch2;
+    //This sensor detects if there is a frisbee in the loading bay
+    DigitalInput opticalSensor = RobotMap.pickupSystemOpticalSensor;
+    //This sensor has no identified purpose
     DigitalInput limitSwitch = RobotMap.pickupSystemLimitSwitch;
+    //This motor is used to bring the frisbee up to the loading bay
     CANJaguar beltMotor = RobotMap.pickupSystemBeltMotor;
+    //This int shows how many frisbees are in the loading bay
     public int numOfFrisbees = 0;
     
     // Put methods for controlling this subsystem
@@ -30,7 +35,7 @@ public class CollectionSystem extends Subsystem {
     // functions provide ways of controlling the subsystem without letting 
     // outside users do everything by hand, as it were.
     public boolean getSwitch()
-    {
+   {
         return limitSwitch.get();
     }
     
