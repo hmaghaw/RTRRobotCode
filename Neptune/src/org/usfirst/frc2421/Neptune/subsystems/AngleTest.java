@@ -14,6 +14,6 @@ public class AngleTest {
     AnalogChannel angle = new AnalogChannel(1);
 
     public void getAngle(){
-        angle.
+       // angle.
     }
 }

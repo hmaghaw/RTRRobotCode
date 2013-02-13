@@ -34,7 +34,7 @@ public class  shooterAngleManipulation extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         double targetAngle = 0;//vision dode needed ro get target height
-        Robot.shootSystem.setShooterAngle(targetAngle);
+        //Robot.shootSystem.setShooterAngle(targetAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()

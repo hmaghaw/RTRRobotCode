@@ -12,7 +12,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
  * TODO Description
  */
 public class CollectionSystem extends Subsystem {
-    DigitalInput opticalSensor = RobotMap.pickupSystemOpticalSensor;
+    DigitalInput limitSwitch2 = RobotMap.pickupSystemLimitSwitch2;
     DigitalInput limitSwitch = RobotMap.pickupSystemLimitSwitch;
     CANJaguar beltMotor = RobotMap.pickupSystemBeltMotor;
     public int numOfFrisbees = 0;
@@ -33,10 +33,10 @@ public class CollectionSystem extends Subsystem {
     {
         return limitSwitch.get();
     }
-            
-    public boolean getOptic()
+    
+    public boolean getSwitch2()
     {
-        return opticalSensor.get();
+        return limitSwitch2.get();
     }
     
     public void goMotor() throws CANTimeoutException

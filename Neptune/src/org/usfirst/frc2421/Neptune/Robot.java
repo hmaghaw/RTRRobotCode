@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
 import org.usfirst.frc2421.Neptune.commands.TeleopCommand;
+import org.usfirst.frc2421.Neptune.commands.collect;
 import org.usfirst.frc2421.Neptune.subsystems.*;
 
 /**
@@ -19,6 +20,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command teleopCommand;
+    Command collect;
     public static OI oi;
     public static DriveSystem driveSystem;
     public static CameraSystem cameraSystem;
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
         climbSystem = new ClimbSystem();
         collectionSystem = new CollectionSystem();
         tipSystem = new TipSystem();
+        
 
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from
@@ -51,6 +54,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousCommand();
         teleopCommand = new TeleopCommand();
+        collect = new collect();
     }
 
     public void autonomousInit() {
@@ -81,6 +85,7 @@ public class Robot extends IterativeRobot {
         if (teleopCommand != null) {
             teleopCommand.start();
         }
+        collect.start();
     }
 
     /**
@@ -88,6 +93,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
     }
 
     /**

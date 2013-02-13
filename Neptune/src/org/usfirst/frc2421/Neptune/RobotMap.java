@@ -34,7 +34,7 @@ public class RobotMap {
     public static Compressor tipSystemTipCompressor;
     public static Relay tipSystemTipperRelaySolenoid;
     
-    public static DigitalInput pickupSystemOpticalSensor;
+    public static DigitalInput pickupSystemLimitSwitch2;
     public static DigitalInput pickupSystemLimitSwitch;
     public static CANJaguar pickupSystemBeltMotor;
 
@@ -47,7 +47,7 @@ public class RobotMap {
         }
 
         try {
-            driveSystemCANJaguarRight = new CANJaguar(6);
+            driveSystemCANJaguarRight = new CANJaguar(2);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -83,26 +83,29 @@ public class RobotMap {
             ex.printStackTrace();
         }
 
-        climbSystemBarSensor1 = new DigitalInput(1, 4);
-        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 1", climbSystemBarSensor1);
-
-        climbSystemBarSensor2 = new DigitalInput(1, 5);
-        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 2", climbSystemBarSensor2);
-
-        climbSystemBarSensor3 = new DigitalInput(1, 6);
-        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 3", climbSystemBarSensor3);
-
-        climbSystemBarSensor4 = new DigitalInput(1, 7);
-        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 4", climbSystemBarSensor4);
-
-        climbSystemBaseLimitSwitch = new DigitalInput(1, 8);
-        LiveWindow.addSensor("ClimbSystem", "Base Limit Switch", climbSystemBaseLimitSwitch);
-
+//        climbSystemBarSensor1 = new DigitalInput(1, 4);
+//        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 1", climbSystemBarSensor1);
+//
+//        climbSystemBarSensor2 = new DigitalInput(1, 5);
+//        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 2", climbSystemBarSensor2);
+//
+//        climbSystemBarSensor3 = new DigitalInput(1, 6);
+//        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 3", climbSystemBarSensor3);
+//
+//        climbSystemBarSensor4 = new DigitalInput(1, 7);
+//        LiveWindow.addSensor("ClimbSystem", "Bar Sensor 4", climbSystemBarSensor4);
+//
+//        climbSystemBaseLimitSwitch = new DigitalInput(1, 8);
+//        LiveWindow.addSensor("ClimbSystem", "Base Limit Switch", climbSystemBaseLimitSwitch);
+       
+        pickupSystemLimitSwitch = new DigitalInput(1,2);
+        pickupSystemLimitSwitch2 = new DigitalInput(1,3);
         try {
-            collectionSystemBrush1 = new CANJaguar(8);
+            pickupSystemBeltMotor = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
+        
 
 
         tipSystemTipCompressor = new Compressor(1, 3, 1, 1);
