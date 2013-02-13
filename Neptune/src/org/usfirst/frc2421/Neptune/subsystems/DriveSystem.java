@@ -19,7 +19,8 @@ import org.usfirst.frc2421.Neptune.commands.TeleDrive;
 
 
 /**
- * TODO Description
+ * This system is used to set and get the speeds of the drive motors
+ * This is a constructor for the 2 CAN Jaguars used in the drive system
  */
 public class DriveSystem extends Subsystem {
 
@@ -34,7 +35,7 @@ public class DriveSystem extends Subsystem {
     }
 
     /**
-     * TODO Description
+     * This method sets the speed of the drive motors based on the parameters
      * @param leftSpeed
      * @param rightSpeed 
      */
@@ -57,7 +58,7 @@ public class DriveSystem extends Subsystem {
     }
     
     /**
-     * TODO Description
+     * This method returns the speeds of the motors in the form of a double array called speeds
      * @return 
      */
     public double[] getSpeeds(){

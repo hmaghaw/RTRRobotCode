@@ -13,4 +13,4 @@ effect the running of a function.Instead of a simple number placed in a
 setSpeed() function, consider making it a constant.
  - Once a logger is present (And their should be one!) make sure to have 
 log statements wherever any major actions are done, such as when interacting 
-with physical robot parts.
+with physical robot parts. Use your head while doing this.
