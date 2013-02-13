@@ -6,7 +6,7 @@ package org.usfirst.frc2421.Neptune.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import org.usfirst.frc2421.Neptune.Robot;
+import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
 
 /**
  *
