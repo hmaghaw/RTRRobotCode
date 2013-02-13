@@ -18,7 +18,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 
 
 /**
- *
+ *TODO delete
  */
 public class TipSystem extends Subsystem {
     // TODO Rename Variables

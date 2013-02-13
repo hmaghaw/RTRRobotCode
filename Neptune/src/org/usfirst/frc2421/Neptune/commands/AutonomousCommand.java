@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used in the first 15 seconds of the game
+ *without driver control
  */
 public class  AutonomousCommand extends Command {
 

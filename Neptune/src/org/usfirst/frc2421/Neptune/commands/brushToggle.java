@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used to turn on and off the brush for the loading system
  */
 public class  brushToggle extends Command {
 

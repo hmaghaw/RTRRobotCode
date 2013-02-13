@@ -9,7 +9,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 
 
 /**
- * TODO Description
+ * This system is used to load disks from the ground to the shooter
  */
 public class CollectionSystem extends Subsystem {
     DigitalInput opticalSensor = RobotMap.pickupSystemOpticalSensor;

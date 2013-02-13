@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used to change the speed of shooter
  */
 public class  toggleSpeed extends Command {
 

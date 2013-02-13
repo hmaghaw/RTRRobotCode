@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
     //TODO Clean up variable names
-    //TODO Does the climb system still need to exist?
+    //TODO Delete climb system variables
     public static CANJaguar driveSystemCANJaguarLeft;
     public static CANJaguar driveSystemCANJaguarRight;
     

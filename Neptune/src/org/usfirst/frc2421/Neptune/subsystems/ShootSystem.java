@@ -18,7 +18,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 
 
 /**
- * TODO Description
+ * This system is used to shoot disks
  */
 public class ShootSystem extends Subsystem {
     CANJaguar wheel1 = RobotMap.shootSystemWheel1;

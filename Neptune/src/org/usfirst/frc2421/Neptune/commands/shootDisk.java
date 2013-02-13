@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used to shoot a disk from the shooter
  */
 public class  shootDisk extends Command {
 

@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used to turn the wiper rod to load the disk into the shooter
  */
 public class  loadDisk extends Command {
 

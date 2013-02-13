@@ -8,7 +8,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 
 
 /**
- * TODO Description
+ * TODO Delete
  */
 public class ClimbSystem extends Subsystem {
     CANJaguar climbMotor1 = RobotMap.climbSystemClimbMotor1;

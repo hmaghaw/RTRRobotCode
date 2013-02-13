@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
- * TODO Description
+ * This system is the camera which is used to see the field in the robot's
+ * point of view
  */
 public class CameraSystem extends Subsystem {
 

@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used in autonomous mode to turn the robot left
  */
 public class  turnLeft extends Command {
 

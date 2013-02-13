@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used in autonomous mode to move the robot forward
  */
 public class  moveForward extends Command {
 

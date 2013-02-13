@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used to move the shooter's angle down
  */
 public class  shooterAngleDown extends Command {
 

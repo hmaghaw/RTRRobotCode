@@ -18,7 +18,7 @@ import org.usfirst.frc2421.Neptune.OI;
 import org.usfirst.frc2421.Neptune.Robot;
 
 /**
- *
+ *This command is used as the control code for the drive system
  */
 public class  TeleDrive extends Command {
     RobotDrive drive;

@@ -16,7 +16,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.commands.TeleDrive;
 
 /**
- * TODO Description
+ * This system is used to move the robot
  */
 public class DriveSystem extends Subsystem {
 
