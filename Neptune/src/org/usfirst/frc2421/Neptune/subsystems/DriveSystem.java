@@ -3,6 +3,7 @@ package org.usfirst.frc2421.Neptune.subsystems;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
 
@@ -59,5 +60,13 @@ public class DriveSystem extends Subsystem {
             ex.printStackTrace();
         }
         return speeds;
+    }
+    
+    public ITable getTable(){
+        ITable table = super.getTable();
+        
+        
+        
+        return table;
     }
 }

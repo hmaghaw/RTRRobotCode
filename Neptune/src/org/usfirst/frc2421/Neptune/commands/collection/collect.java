@@ -1,10 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.usfirst.frc2421.Neptune.commands.collection;
 
-import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
@@ -28,21 +23,12 @@ public class collect extends Command {
     public void execute() {
 
         if (Robot.collectionSystem.getSwitch() && !on) {
-            try {
                 Robot.collectionSystem.goMotor();
-                on = true;
-            } catch (CANTimeoutException ex) {
-                ex.printStackTrace();
-            }
         } else if (Robot.collectionSystem.getSwitch2() && on) {
-            try {
                 Robot.collectionSystem.stopMotor();
                 on = false;
-            } catch (CANTimeoutException ex) {
-                ex.printStackTrace();
             }
         }
-    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

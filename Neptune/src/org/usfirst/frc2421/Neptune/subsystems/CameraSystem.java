@@ -1,6 +1,7 @@
 package org.usfirst.frc2421.Neptune.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.tables.ITable;
 
 
 /**
@@ -16,6 +17,11 @@ public class CameraSystem extends Subsystem {
 
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public ITable getTable(){
+        ITable table = super.getTable();
+        return table;
     }
 }
 

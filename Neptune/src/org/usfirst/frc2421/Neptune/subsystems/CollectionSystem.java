@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 
 
@@ -15,16 +17,15 @@ import org.usfirst.frc2421.Neptune.RobotMap;
 public class CollectionSystem extends Subsystem {
     //This sensor detects if there is a frisbee in the loading bay
     DigitalInput opticalSensor = RobotMap.pickupSystemOpticalSensor;
-    //This sensor has no identified purpose
     DigitalInput limitSwitch = RobotMap.pickupSystemLimitSwitch;
     DigitalInput limitSwitchTwo = RobotMap.pickupSystemLimitSwitch2;
     //This motor is used to bring the frisbee up to the loading bay
     CANJaguar beltMotor = RobotMap.pickupSystemBeltMotor;
     //This int shows how many frisbees are in the loading bay
     public int numOfFrisbees = 0;
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+    
+    public CollectionSystem(){
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -60,6 +61,12 @@ public class CollectionSystem extends Subsystem {
 
     public void upFriz(){
         numOfFrisbees++;
+    }
+    
+    public ITable getTable(){
+        ITable table = super.getTable();
+        
+        return table;
     }
 }
 

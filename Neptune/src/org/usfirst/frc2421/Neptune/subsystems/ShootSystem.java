@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 
 
@@ -64,6 +65,11 @@ public class ShootSystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public ITable getTable(){
+        ITable table = super.getTable();
+        return table;
     }
 }
 
