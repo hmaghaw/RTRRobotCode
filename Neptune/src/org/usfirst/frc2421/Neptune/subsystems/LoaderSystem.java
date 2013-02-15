@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 
@@ -14,17 +13,17 @@ import org.usfirst.frc2421.Neptune.RobotMap;
  * This subsystem is used to control the parts of the robot which pick up
  * frisbees, store them, and load them into the shooter
  */
-public class CollectionSystem extends Subsystem {
+public class LoaderSystem extends Subsystem {
     //This sensor detects if there is a frisbee in the loading bay
-    DigitalInput opticalSensor = RobotMap.pickupSystemOpticalSensor;
-    DigitalInput limitSwitch = RobotMap.pickupSystemLimitSwitch;
-    DigitalInput limitSwitchTwo = RobotMap.pickupSystemLimitSwitch2;
+    DigitalInput opticalSensor = RobotMap.loaderOpticalSensor;
+    DigitalInput restLimitSwitch = RobotMap.loaderRestSwitch;
+    DigitalInput firedLimitSwitch = RobotMap.loaderFiredSwitch;
     //This motor is used to bring the frisbee up to the loading bay
-    CANJaguar beltMotor = RobotMap.pickupSystemBeltMotor;
+    CANJaguar loaderMotor = RobotMap.loaderMotor;
     //This int shows how many frisbees are in the loading bay
     public int numOfFrisbees = 0;
     
-    public CollectionSystem(){
+    public LoaderSystem(){
     }
 
     public void initDefaultCommand() {
@@ -35,17 +34,17 @@ public class CollectionSystem extends Subsystem {
     // TODO These should be more than just getters and setters. Subsystems
     // functions provide ways of controlling the subsystem without letting
     // outside users do everything by hand, as it were.
-    public boolean getSwitch(){
-        return limitSwitch.get();
+    public boolean getRestSwitch(){
+        return restLimitSwitch.get();
     }
 
-    public boolean getSwitch2(){
-        return limitSwitchTwo.get();
+    public boolean getFiredSwitch(){
+        return firedLimitSwitch.get();
     }
 
-    public void goMotor(double speed){
+    public void startLoaderArm(double speed){
         try {
-            beltMotor.setX(speed);//enter actual motor speed here later
+            loaderMotor.setX(speed);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -53,7 +52,7 @@ public class CollectionSystem extends Subsystem {
 
     public void stopMotor(){
         try {
-            beltMotor.setX(0);
+            loaderMotor.setX(0);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

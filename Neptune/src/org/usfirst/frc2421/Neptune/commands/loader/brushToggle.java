@@ -1,4 +1,4 @@
-package org.usfirst.frc2421.Neptune.commands.collection;
+package org.usfirst.frc2421.Neptune.commands.loader;
 
 import edu.wpi.first.wpilibj.command.Command;
 

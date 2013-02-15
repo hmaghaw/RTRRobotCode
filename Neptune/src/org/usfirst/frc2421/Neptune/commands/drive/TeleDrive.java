@@ -8,7 +8,6 @@ import org.usfirst.frc2421.Neptune.Robot;
  *
  */
 public class  TeleDrive extends Command {
-    private boolean finished;
     
     public TeleDrive() {
         // Use requires() here to declare subsystem dependencies
@@ -98,7 +97,7 @@ public class  TeleDrive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;
+        return false;
     }
 
     // Called once after isFinished returns true

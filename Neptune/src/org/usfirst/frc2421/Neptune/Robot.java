@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
 import org.usfirst.frc2421.Neptune.commands.TeleopCommand;
-import org.usfirst.frc2421.Neptune.commands.collection.collect;
+import org.usfirst.frc2421.Neptune.commands.loader.loadFrisbee;
 import org.usfirst.frc2421.Neptune.subsystems.CameraSystem;
-import org.usfirst.frc2421.Neptune.subsystems.CollectionSystem;
+import org.usfirst.frc2421.Neptune.subsystems.LoaderSystem;
 import org.usfirst.frc2421.Neptune.subsystems.DriveSystem;
 import org.usfirst.frc2421.Neptune.subsystems.ShootSystem;
 
@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
     public static DriveSystem driveSystem;
     public static CameraSystem cameraSystem;
     public static ShootSystem shootSystem;
-    public static CollectionSystem collectionSystem;
+    public static LoaderSystem loaderSystem;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
         driveSystem = new DriveSystem();
         cameraSystem = new CameraSystem();
         shootSystem = new ShootSystem();
-        collectionSystem = new CollectionSystem();  
+        loaderSystem = new LoaderSystem();  
 
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from

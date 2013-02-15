@@ -1,10 +1,10 @@
 package org.usfirst.frc2421.Neptune;
 
+import org.usfirst.frc2421.Neptune.commands.loader.loadFrisbee;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
-import org.usfirst.frc2421.Neptune.commands.collection.*;
 import org.usfirst.frc2421.Neptune.commands.drive.*;
 import org.usfirst.frc2421.Neptune.commands.shoot.*;
 
@@ -47,7 +47,7 @@ public class OI {
         shootSpeedDown.whenPressed(new shooterSlowDown());
         
         loadDiskButton = new JoystickButton(shooterStick,7);
-        loadDiskButton.whenPressed(new collect());
+        loadDiskButton.whenPressed(new loadFrisbee());
         
         // Drive Control Setup
         driveStick = new Joystick(2);
@@ -65,7 +65,6 @@ public class OI {
         SmartDashboard.putData("moveBack", new moveBack());
         SmartDashboard.putData("turnLeft", new turnLeft());
         SmartDashboard.putData("turnRight", new turnRight());
-        SmartDashboard.putData("loadDisk", new loadDisk());
         SmartDashboard.putData("toggleSpeed", new toggleSpeed());
 
         SmartDashboard.putData("angleIncrease", new angleIncrease());

@@ -1,16 +1,19 @@
-package org.usfirst.frc2421.Neptune.commands.collection;
+package org.usfirst.frc2421.Neptune.commands.loader;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2421.Neptune.Robot;
 
 /**
  *
+ * @author Kal
  */
-public class  loadDisk extends Command {
-
-    public loadDisk() {
+public class decreaseCount extends Command{
+    public decreaseCount() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    }
+        requires(Robot.loaderSystem);
+        Robot.loaderSystem.numOfFrisbees--;
+    } 
 
     // Called just before this Command runs the first time
     protected void initialize() {

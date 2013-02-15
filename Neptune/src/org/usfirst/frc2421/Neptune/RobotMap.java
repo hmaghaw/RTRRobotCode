@@ -25,10 +25,10 @@ public class RobotMap {
 
     // Collection System Components
     public static CANJaguar collectionSystemBrush1;
-    public static DigitalInput pickupSystemLimitSwitch2;
-    public static DigitalInput pickupSystemLimitSwitch;
-    public static CANJaguar pickupSystemBeltMotor;
-    public static DigitalInput pickupSystemOpticalSensor;
+    public static DigitalInput loaderFiredSwitch;
+    public static DigitalInput loaderRestSwitch;
+    public static CANJaguar loaderMotor;
+    public static DigitalInput loaderOpticalSensor;
 
     public static void init() {
         try {
@@ -64,11 +64,11 @@ public class RobotMap {
         shootSystemMeasureAngleOfFire = new AnalogChannel(10);
         LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemMeasureAngleOfFire);
        
-        pickupSystemLimitSwitch = new DigitalInput(1,1);
-        pickupSystemLimitSwitch2 = new DigitalInput(1,2);
+        loaderRestSwitch = new DigitalInput(1,1);
+        loaderFiredSwitch = new DigitalInput(1,2);
         
         try {
-            pickupSystemBeltMotor = new CANJaguar(3);
+            loaderMotor = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
