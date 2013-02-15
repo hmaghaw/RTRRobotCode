@@ -28,25 +28,25 @@ public class OI {
         // Shooting Control Setup
         shooterStick = new Joystick(1);
 
-        shooterAngleDecrease = new JoystickButton(shooterStick, 4);
+        shooterAngleDecrease = new JoystickButton(shooterStick, 12);
         shooterAngleDecrease.whileHeld(new angleDecrease());
         
-        shooterAngleIncrease = new JoystickButton(shooterStick, 3);
+        shooterAngleIncrease = new JoystickButton(shooterStick, 11);
         shooterAngleIncrease.whileHeld(new angleIncrease());
         
         shootDeactivate = new JoystickButton(shooterStick, 2);
         shootDeactivate.whenPressed(new ShooterEnginesStop());
         
-        shootActivate = new JoystickButton(shooterStick, 1);
+        shootActivate = new JoystickButton(shooterStick, 3);
         shootActivate.whenPressed(new ShooterEnginesGo());
         
         shootSpeedUp = new JoystickButton(shooterStick, 5);
         shootSpeedUp.whenPressed(new shooterSpeedUp());
         
-        shootSpeedDown = new JoystickButton(shooterStick, 6);
+        shootSpeedDown = new JoystickButton(shooterStick, 4);
         shootSpeedDown.whenPressed(new shooterSlowDown());
         
-        loadDiskButton = new JoystickButton(shooterStick,7);
+        loadDiskButton = new JoystickButton(shooterStick,1);
         loadDiskButton.whenPressed(new loadFrisbee());
         
         // Drive Control Setup

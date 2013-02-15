@@ -44,13 +44,13 @@ public class RobotMap {
         }
 
         try {
-            shootSystemWheel1 = new CANJaguar(4);
+            shootSystemWheel1 = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
 
         try {
-            shootSystemWheel2 = new CANJaguar(6);
+            shootSystemWheel2 = new CANJaguar(4); 
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -68,7 +68,7 @@ public class RobotMap {
         loaderFiredSwitch = new DigitalInput(1,2);
         
         try {
-            loaderMotor = new CANJaguar(3);
+            loaderMotor = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
