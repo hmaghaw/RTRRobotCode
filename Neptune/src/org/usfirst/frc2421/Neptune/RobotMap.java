@@ -32,7 +32,7 @@ public class RobotMap {
 
     public static void init() {
         try {
-            driveSystemCANJaguarLeft = new CANJaguar(4);
+            driveSystemCANJaguarLeft = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace(); //We should really do better than just 
         }
@@ -44,13 +44,13 @@ public class RobotMap {
         }
 
         try {
-            shootSystemWheel1 = new CANJaguar(8);
+            shootSystemWheel1 = new CANJaguar(4);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
 
         try {
-            shootSystemWheel2 = new CANJaguar(5);
+            shootSystemWheel2 = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -64,11 +64,11 @@ public class RobotMap {
         shootSystemMeasureAngleOfFire = new AnalogChannel(10);
         LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemMeasureAngleOfFire);
        
-        pickupSystemLimitSwitch = new DigitalInput(1,2);
-        pickupSystemLimitSwitch2 = new DigitalInput(1,3);
+        pickupSystemLimitSwitch = new DigitalInput(1,1);
+        pickupSystemLimitSwitch2 = new DigitalInput(1,2);
         
         try {
-            pickupSystemBeltMotor = new CANJaguar(6);
+            pickupSystemBeltMotor = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

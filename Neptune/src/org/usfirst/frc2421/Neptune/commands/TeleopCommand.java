@@ -15,6 +15,7 @@ import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
 public class TeleopCommand extends Command {
 
     boolean finished;
+    Command shootCommand;
 
     public TeleopCommand() {
         finished = false;
@@ -25,7 +26,7 @@ public class TeleopCommand extends Command {
 
     protected void execute() {
         if (!finished) {
-            Scheduler.getInstance().add(new TeleDrive());
+            //Scheduler.getInstance().add(new TeleDrive());
             finished = true;
         }
     }

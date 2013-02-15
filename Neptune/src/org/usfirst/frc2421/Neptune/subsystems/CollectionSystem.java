@@ -43,9 +43,9 @@ public class CollectionSystem extends Subsystem {
         return limitSwitchTwo.get();
     }
 
-    public void goMotor(){
+    public void goMotor(double speed){
         try {
-            beltMotor.setX(.5);//enter actual motor speed here later
+            beltMotor.setX(speed);//enter actual motor speed here later
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

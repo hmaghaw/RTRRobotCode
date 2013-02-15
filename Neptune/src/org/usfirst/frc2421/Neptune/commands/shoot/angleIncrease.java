@@ -7,7 +7,11 @@ import org.usfirst.frc2421.Neptune.Robot;
  *
  */
 public class  angleIncrease extends Command {
-
+    
+    double angle;
+    boolean end = false;
+    double angleTarget;
+    
     public angleIncrease() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.shootSystem);
@@ -15,15 +19,22 @@ public class  angleIncrease extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        angle = Robot.shootSystem.checkCurrentAngle();
+        angleTarget = angle + .1;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        while(angle < angleTarget){
+            Robot.shootSystem.shooterAngleIncrease();
+            angle = Robot.shootSystem.checkCurrentAngle();
+        }
+        end = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return end;
     }
 
     // Called once after isFinished returns true

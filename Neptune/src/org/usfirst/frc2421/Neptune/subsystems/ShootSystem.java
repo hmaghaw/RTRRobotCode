@@ -23,7 +23,7 @@ public class ShootSystem extends Subsystem {
          public void startShooter(double speed){
         try {
             wheel1.setX(-speed);
-            wheel2.setX(-speed);
+            wheel2.setX(-speed-.15);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -48,7 +48,7 @@ public class ShootSystem extends Subsystem {
     
     public void shooterAngleIncrease() {
         try {
-            angleOfFire.setX(-1);
+            angleOfFire.setX(-.5); //change speed of motor here
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -56,10 +56,13 @@ public class ShootSystem extends Subsystem {
     
     public void shooterAngleDecrease() {
         try {
-            angleOfFire.setX(1);
+            angleOfFire.setX(.5);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
+    }
+    public double checkCurrentAngle(){
+        return measureAngleOfFire.getAverageVoltage() * 72;
     }
     
     public void initDefaultCommand() {

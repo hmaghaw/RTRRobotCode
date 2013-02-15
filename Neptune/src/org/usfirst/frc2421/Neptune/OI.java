@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
-import org.usfirst.frc2421.Neptune.commands.collection.loadDisk;
+import org.usfirst.frc2421.Neptune.commands.collection.*;
 import org.usfirst.frc2421.Neptune.commands.drive.*;
 import org.usfirst.frc2421.Neptune.commands.shoot.*;
 
@@ -21,12 +21,12 @@ public class OI {
     
     //Shooting Control Objects
     public Joystick shooterStick;
-    public JoystickButton shootActivate, shootDeactivate;
-    public JoystickButton shooterAngleIncrease, shooterAngleDecrease;
+    public JoystickButton shootActivate, shootDeactivate, shooterAngleIncrease, shooterAngleDecrease, shootSpeedUp, shootSpeedDown;
+    public JoystickButton loadDiskButton;
 
     public OI() {
         // Shooting Control Setup
-        shooterStick = new Joystick(2);
+        shooterStick = new Joystick(1);
 
         shooterAngleDecrease = new JoystickButton(shooterStick, 4);
         shooterAngleDecrease.whileHeld(new angleDecrease());
@@ -39,10 +39,18 @@ public class OI {
         
         shootActivate = new JoystickButton(shooterStick, 1);
         shootActivate.whenPressed(new ShooterEnginesGo());
-
+        
+        shootSpeedUp = new JoystickButton(shooterStick, 5);
+        shootSpeedUp.whenPressed(new shooterSpeedUp());
+        
+        shootSpeedDown = new JoystickButton(shooterStick, 6);
+        shootSpeedDown.whenPressed(new shooterSlowDown());
+        
+        loadDiskButton = new JoystickButton(shooterStick,7);
+        loadDiskButton.whenPressed(new collect());
         
         // Drive Control Setup
-        driveStick = new Joystick(1);
+        driveStick = new Joystick(2);
 
         speedToggle = new JoystickButton(driveStick, 1);
         speedToggle.whileHeld(new toggleSpeed());
