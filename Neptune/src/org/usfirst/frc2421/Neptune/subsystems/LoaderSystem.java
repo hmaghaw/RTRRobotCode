@@ -57,8 +57,7 @@ public class LoaderSystem extends Subsystem {
     public void stopMotor(){
         try {
             loaderMotor.setX(0);
-        } catch (CANTimeoutException ex) {
-            
+        } catch (CANTimeoutException ex) {            
             if (Log.debug()){
                 Log.log(ex.toString());
             }
