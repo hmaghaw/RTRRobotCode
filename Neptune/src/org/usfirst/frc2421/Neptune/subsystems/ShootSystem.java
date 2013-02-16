@@ -14,7 +14,7 @@ import org.usfirst.frc2421.Neptune.RobotMap;
  * TODO Description
  */
 public class ShootSystem extends Subsystem {
-    public double speed;
+    public double backSpeed, frontSpeed;
     public double angle;    
     
     public CANJaguar frontWheel = RobotMap.frontShooterWheel;
@@ -22,10 +22,10 @@ public class ShootSystem extends Subsystem {
     public CANJaguar angleOfFire = RobotMap.shootSystemAngleOfFire;
     public AnalogChannel measureAngleOfFire = RobotMap.shootSystemMeasureAngleOfFire;
 
-         public void startShooter(double speed){
+         public void startShooter(){
         try {
-            frontWheel.setX(-speed);
-            backWheel.setX(-speed-.15);
+            backWheel.setX(-backSpeed);
+            frontWheel.setX(-frontSpeed);
         } catch (CANTimeoutException ex) {
             if (Log.debug())       {
                 Log.log(ex.toString());
@@ -35,8 +35,8 @@ public class ShootSystem extends Subsystem {
          
     public void stopShooter(){
         try {
-            frontWheel.setX(0);
             backWheel.setX(0);
+            frontWheel.setX(0);
         } catch (CANTimeoutException ex) {
             if (Log.debug())
                 Log.log(ex.toString());

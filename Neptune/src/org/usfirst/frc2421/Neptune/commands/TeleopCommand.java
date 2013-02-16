@@ -26,7 +26,7 @@ public class TeleopCommand extends Command {
 
     protected void execute() {
         if (!finished) {
-            Scheduler.getInstance().add(new TeleDrive());
+            //Scheduler.getInstance().add(new TeleDrive());
             finished = true;
         }
     }

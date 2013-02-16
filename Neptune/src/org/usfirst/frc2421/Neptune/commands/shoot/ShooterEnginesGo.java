@@ -7,22 +7,23 @@ import org.usfirst.frc2421.Neptune.Robot;
  *
  */
 public class  ShooterEnginesGo extends Command {
-    public double speed;
+    //public double speed;
     private boolean finished;
     
     public ShooterEnginesGo() {
-        speed = 0;
+        //speed = 0;
         requires(Robot.shootSystem);
     }
     
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.shootSystem.speed = .1;
+        Robot.shootSystem.backSpeed = .1;
+        Robot.shootSystem.frontSpeed = .1 + .15;
     }
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.shootSystem.startShooter(-Robot.shootSystem.speed);
+        Robot.shootSystem.startShooter();
     }
     
     // Make this return true when this Command no longer needs to run execute()
