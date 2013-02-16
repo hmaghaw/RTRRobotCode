@@ -4,6 +4,7 @@ import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
@@ -69,8 +70,8 @@ public class DriveSystem extends Subsystem {
     
     public ITable getTable(){
         ITable table = super.getTable();
-        table.putValue("Left Drive Motor", leftDriveMotor);
-        table.putValue("Right Drive Motor",rightDriveMotor);
+        SmartDashboard.putData("Left Drive Motor", leftDriveMotor);
+        SmartDashboard.putData("Right Drive Motor",rightDriveMotor);
         return table;
     }
 }

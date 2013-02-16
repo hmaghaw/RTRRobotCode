@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 
@@ -79,10 +80,10 @@ public class ShootSystem extends Subsystem {
     
     public ITable getTable(){
         ITable table = super.getTable();
-        table.putValue("Front Shooter Wheel ", frontWheel);
-        table.putValue("Back Shooter Wheel", backWheel);
-        table.putValue("Angle Motor", angleOfFire);
-        table.putValue("Angle Motor Encoder", measureAngleOfFire);
+        SmartDashboard.putData("Front Shooter Wheel ", frontWheel);
+        SmartDashboard.putData("Back Shooter Wheel", backWheel);
+        SmartDashboard.putData("Angle Motor", angleOfFire);
+        SmartDashboard.putData("Angle Motor Encoder", measureAngleOfFire);
         
         
         return table;

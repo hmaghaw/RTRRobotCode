@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 
@@ -70,10 +71,10 @@ public class LoaderSystem extends Subsystem {
     
     public ITable getTable(){
         ITable table = super.getTable();
-        table.putValue("Load Bay Status", opticalSensor);
-        table.putValue("Arm rest switch", restLimitSwitch);
-        table.putValue("Arm fired switch", firedLimitSwitch);
-        table.putValue("Arm motor", loaderMotor);
+        SmartDashboard.putData("Load Bay Status", opticalSensor);
+        SmartDashboard.putData("Arm rest switch", restLimitSwitch);
+        SmartDashboard.putData("Arm fired switch", firedLimitSwitch);
+        SmartDashboard.putData("Arm motor", loaderMotor);
         
         return table;
     }
