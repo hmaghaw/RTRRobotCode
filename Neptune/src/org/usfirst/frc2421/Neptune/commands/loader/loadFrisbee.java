@@ -3,50 +3,59 @@ package org.usfirst.frc2421.Neptune.commands.loader;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2421.Neptune.Robot;
 
+// Make this return true when this Command no longer needs to run execute()
 /**
  *
  * @author Kal
  */
 public class loadFrisbee extends Command {
 
-    public boolean direction;
-    public boolean end;
+    public boolean hasLoaded;
+    private boolean finished;
 
     public loadFrisbee() {
         requires(Robot.loaderSystem);
-        direction = true;
-        end = false;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        while (!Robot.loaderSystem.getRestSwitch()){
+        finished = false;
+        hasLoaded = false;
+        while (!Robot.loaderSystem.getRestSwitch()) { // Add limit/timeout
             Robot.loaderSystem.startLoaderArm(.5);
         }
     }
 
     // Called repeatedly when this Command is scheduled to run
     public void execute() {
-
-        if (direction && !Robot.loaderSystem.getFiredSwitch()) {
+        if (Robot.loaderSystem.getRestSwitch() & !hasLoaded) {
             Robot.loaderSystem.startLoaderArm(-.5);
-        }
-        if (Robot.loaderSystem.getFiredSwitch() && direction) {
-            Robot.loaderSystem.stopMotor();
-            direction = false;
-        }
-        if (Robot.loaderSystem.getFiredSwitch() && !direction) {
-            Robot.loaderSystem.startLoaderArm(.5);
-        }
-        if (Robot.loaderSystem.getRestSwitch() && !direction) {
-            Robot.loaderSystem.stopMotor();        
-            end = true;
-        }
-    }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return end;
+        } else if (Robot.loaderSystem.getFiredSwitch()) {
+            Robot.loaderSystem.startLoaderArm(.5);
+            hasLoaded = false;
+            
+        } else if (Robot.loaderSystem.getRestSwitch() && hasLoaded) {
+            Robot.loaderSystem.stopArm();
+            finished = true;
+        }
+//        if (hasLoaded && !Robot.loaderSystem.getFiredSwitch()) {
+//            Robot.loaderSystem.startLoaderArm(-.5);
+//        }
+//        if (Robot.loaderSystem.getFiredSwitch() && hasLoaded) {
+//            Robot.loaderSystem.stopArm();
+//            hasLoaded = false;
+//        }
+//        if (Robot.loaderSystem.getFiredSwitch() && !hasLoaded) {
+//            Robot.loaderSystem.startLoaderArm(.5);
+//        }
+//        if (Robot.loaderSystem.getRestSwitch() && !hasLoaded) {
+//            Robot.loaderSystem.stopArm();        
+//            end = true;
+    }
+}
+protected boolean isFinished() {
+        return finished;
     }
 
     // Called once after isFinished returns true
