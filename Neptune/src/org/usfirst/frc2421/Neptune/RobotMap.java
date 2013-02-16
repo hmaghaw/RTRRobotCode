@@ -18,8 +18,8 @@ public class RobotMap {
     public static CANJaguar driveSystemCANJaguarRight;
     
     // Shooting System Components
-    public static CANJaguar shootSystemWheel1;
-    public static CANJaguar shootSystemWheel2;
+    public static CANJaguar frontShooterWheel;
+    public static CANJaguar backShooterWheel;
     public static CANJaguar shootSystemAngleOfFire;
     public static AnalogChannel shootSystemMeasureAngleOfFire;
 
@@ -44,13 +44,13 @@ public class RobotMap {
         }
 
         try {
-            shootSystemWheel1 = new CANJaguar(3);
+            frontShooterWheel = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
 
         try {
-            shootSystemWheel2 = new CANJaguar(4); 
+            backShooterWheel = new CANJaguar(4); 
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

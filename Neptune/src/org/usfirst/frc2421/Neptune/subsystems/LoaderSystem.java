@@ -1,5 +1,6 @@
 package org.usfirst.frc2421.Neptune.subsystems;
 
+import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -46,7 +47,10 @@ public class LoaderSystem extends Subsystem {
         try {
             loaderMotor.setX(speed);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()){
+                Log.log(ex.toString());
+            }
+                
         }
     }
 
@@ -54,7 +58,10 @@ public class LoaderSystem extends Subsystem {
         try {
             loaderMotor.setX(0);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            
+            if (Log.debug()){
+                Log.log(ex.toString());
+            }
         }
     }
 
@@ -64,6 +71,10 @@ public class LoaderSystem extends Subsystem {
     
     public ITable getTable(){
         ITable table = super.getTable();
+        table.putValue("Load Bay Status", opticalSensor);
+        table.putValue("Arm rest switch", restLimitSwitch);
+        table.putValue("Arm fired switch", firedLimitSwitch);
+        table.putValue("Arm motor", loaderMotor);
         
         return table;
     }

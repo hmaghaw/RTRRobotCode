@@ -1,5 +1,6 @@
 package org.usfirst.frc2421.Neptune.subsystems;
 
+import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -14,8 +15,8 @@ import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
  */
 public class DriveSystem extends Subsystem {
 
-    public CANJaguar cANJaguarLeft = RobotMap.driveSystemCANJaguarLeft;
-    public CANJaguar cANJaguarRight = RobotMap.driveSystemCANJaguarRight;
+    public CANJaguar leftDriveMotor = RobotMap.driveSystemCANJaguarLeft;
+    public CANJaguar rightDriveMotor = RobotMap.driveSystemCANJaguarRight;
 
     public void initDefaultCommand() {
         setDefaultCommand(new TeleDrive()); //This might conflict with automode
@@ -30,10 +31,12 @@ public class DriveSystem extends Subsystem {
      */
     public void runMotors(double leftSpeed, double rightSpeed) {
         try {
-            cANJaguarLeft.setX(leftSpeed);
-            cANJaguarRight.setX(rightSpeed);
+            leftDriveMotor.setX(leftSpeed);
+            rightDriveMotor.setX(rightSpeed);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()){
+                Log.log(ex.toString());
+            }
         }
     }
 
@@ -54,19 +57,20 @@ public class DriveSystem extends Subsystem {
     public double[] getSpeeds() {
         double[] speeds = {0, 0}; // Initializes a double array of two zeroes
         try {
-            speeds[0] = cANJaguarLeft.getX();
-            speeds[1] = cANJaguarRight.getX();
+            speeds[0] = leftDriveMotor.getX();
+            speeds[1] = rightDriveMotor.getX();
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug())
+            Log.log(ex.toString());
         }
-        return speeds;
+                return speeds;
+        
     }
     
     public ITable getTable(){
         ITable table = super.getTable();
-        
-        
-        
+        table.putValue("Left Drive Motor", leftDriveMotor);
+        table.putValue("Right Drive Motor",rightDriveMotor);
         return table;
     }
 }
