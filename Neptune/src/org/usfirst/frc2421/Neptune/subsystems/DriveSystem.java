@@ -18,7 +18,6 @@ public class DriveSystem extends Subsystem {
     public CANJaguar cANJaguarRight = RobotMap.driveSystemCANJaguarRight;
 
     public void initDefaultCommand() {
-        setDefaultCommand(new TeleDrive()); //This might conflict with automode
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
