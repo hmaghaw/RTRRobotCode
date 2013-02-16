@@ -46,15 +46,6 @@ public class CameraUtilities {
     final static double VIEW_ANGLE = 48;       //Axis M1011 camera
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
 
-    public static class Scores {
-
-        double rectangularity;
-        double aspectRatioInner;
-        double aspectRatioOuter;
-        double xEdge;
-        double yEdge;
-    }
-
 //    public void robotInit() {
 //        camera = AxisCamera.getInstance();  // get an instance of the camera
 //        cc = new CriteriaCollection();      // create the criteria for the particle filter
@@ -195,7 +186,7 @@ public class CameraUtilities {
      *
      * @return True if the particle meets all limits, false otherwise
      */
-    public static boolean scoreCompare(CameraUtilities.Scores scores, boolean outer) {
+    public static boolean scoreCompare(Scores scores, boolean outer) {
         boolean isTarget = true;
 
         isTarget &= scores.rectangularity > RECTANGULARITY_LIMIT;
