@@ -9,39 +9,39 @@ import org.usfirst.frc2421.Neptune.Robot;
  */
 public class loadFrisbee extends Command {
 
-    public boolean direction;
+    public boolean isForward;
     public boolean end;
 
     public loadFrisbee() {
         requires(Robot.loaderSystem);
-        direction = true;
-        end = false;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
         while (!Robot.loaderSystem.getRestSwitch()){
             Robot.loaderSystem.startLoaderArm(.5);
+            isForward = true;
+            end = false;
         }
     }
 
     // Called repeatedly when this Command is scheduled to run
     public void execute() {
 
-        if (direction && !Robot.loaderSystem.getFiredSwitch()) {
+        if (isForward && !Robot.loaderSystem.getFiredSwitch()) {
             Robot.loaderSystem.startLoaderArm(-.5);
         }
-        if (Robot.loaderSystem.getFiredSwitch() && direction) {
+        if (Robot.loaderSystem.getFiredSwitch() && isForward) {
             Robot.loaderSystem.stopMotor();
-            direction = false;
+            isForward = false;
         }
-        if (Robot.loaderSystem.getFiredSwitch() && !direction) {
+        if (Robot.loaderSystem.getFiredSwitch() && !isForward) {
             Robot.loaderSystem.startLoaderArm(.5);
         }
-        if (Robot.loaderSystem.getRestSwitch() && !direction) {
+        if (Robot.loaderSystem.getRestSwitch() && !isForward) {
             Robot.loaderSystem.stopMotor();        
-            end = true;
         }
+        end = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()

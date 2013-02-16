@@ -8,17 +8,17 @@ package org.usfirst.frc2421.Neptune.utils;
  *
  * @author Driver
  */
-public class RobotLogger {
+public class RobotLog {
     
-    private RobotLogger() {
+    private RobotLog() {
     }
     
-    public static RobotLogger getInstance() {
+    public static RobotLog getInstance() {
         return RobotLoggerHolder.INSTANCE;
     }
     
     private static class RobotLoggerHolder {
 
-        private static final RobotLogger INSTANCE = new RobotLogger();
+        private static final RobotLog INSTANCE = new RobotLog();
     }
 }

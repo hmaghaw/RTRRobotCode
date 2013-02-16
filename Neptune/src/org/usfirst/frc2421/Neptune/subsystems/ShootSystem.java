@@ -23,8 +23,8 @@ public class ShootSystem extends Subsystem {
 
          public void startShooter(){
         try {
-            backwheel.setX(-backSpeed);
-            frontwheel.setX(-frontSpeed);
+            backWheel.setX(-backSpeed);
+            frontWheel.setX(-frontSpeed);
         } catch (CANTimeoutException ex) {
             if (Log.debug())       {
                 Log.log(ex.toString());
@@ -34,8 +34,8 @@ public class ShootSystem extends Subsystem {
          
     public void stopShooter(){
         try {
-            backwheel.setX(0);
-            frontwheel.setX(0);
+            backWheel.setX(0);
+            frontWheel.setX(0);
         } catch (CANTimeoutException ex) {
             if (Log.debug())
                 Log.log(ex.toString());
