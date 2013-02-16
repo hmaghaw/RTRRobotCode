@@ -1,5 +1,6 @@
 package org.usfirst.frc2421.Neptune.subsystems;
 
+import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -15,8 +16,8 @@ public class ShootSystem extends Subsystem {
     public double backSpeed, frontSpeed;
     public double angle;    
     
-    public CANJaguar backwheel = RobotMap.shootSystemWheel1;
-    public CANJaguar frontwheel = RobotMap.shootSystemWheel2;
+    public CANJaguar frontWheel = RobotMap.frontShooterWheel;
+    public CANJaguar backWheel = RobotMap.backShooterWheel;
     public CANJaguar angleOfFire = RobotMap.shootSystemAngleOfFire;
     public AnalogChannel measureAngleOfFire = RobotMap.shootSystemMeasureAngleOfFire;
 
@@ -25,16 +26,19 @@ public class ShootSystem extends Subsystem {
             backwheel.setX(-backSpeed);
             frontwheel.setX(-frontSpeed);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug())       {
+                Log.log(ex.toString());
+            }
         }
-    }
+         }
          
     public void stopShooter(){
         try {
             backwheel.setX(0);
             frontwheel.setX(0);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug())
+                Log.log(ex.toString());
         }
     }
     
@@ -42,7 +46,8 @@ public class ShootSystem extends Subsystem {
         try {
             angleOfFire.setX(0);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug());
+            Log.log(ex.toString());
         }
     }
     
@@ -50,7 +55,8 @@ public class ShootSystem extends Subsystem {
         try {
             angleOfFire.setX(-.5); //change speed of motor here
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug())
+                Log.log(ex.toString());
         }
     }
     
@@ -58,7 +64,8 @@ public class ShootSystem extends Subsystem {
         try {
             angleOfFire.setX(.5);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if(Log.debug());
+            Log.log(ex.toString());
         }
     }
     public double checkCurrentAngle(){
@@ -72,6 +79,12 @@ public class ShootSystem extends Subsystem {
     
     public ITable getTable(){
         ITable table = super.getTable();
+        table.putValue("Front Shooter Wheel ", frontWheel);
+        table.putValue("Back Shooter Wheel", backWheel);
+        table.putValue("Angle Motor", angleOfFire);
+        table.putValue("Angle Motor Encoder", measureAngleOfFire);
+        
+        
         return table;
     }
 }
