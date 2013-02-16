@@ -32,13 +32,13 @@ public class RobotMap {
 
     public static void init() {
         try {
-            driveSystemCANJaguarLeft = new CANJaguar(3);
+            driveSystemCANJaguarLeft = new CANJaguar(16);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace(); //We should really do better than just 
         }
 
         try {
-            driveSystemCANJaguarRight = new CANJaguar(2);
+            driveSystemCANJaguarRight = new CANJaguar(16);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

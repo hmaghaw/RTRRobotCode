@@ -20,10 +20,14 @@ public class  shooterSpeedUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.shootSystem.speed += .1;
-        if(Robot.shootSystem.speed > .6){
-           Robot.shootSystem.speed = .6;
+        Robot.shootSystem.backSpeed += .1;
+        Robot.shootSystem.frontSpeed += .1;
+        if(Robot.shootSystem.backSpeed > .75){
+           Robot.shootSystem.backSpeed = .75;
        }
+        if (Robot.shootSystem.frontSpeed > .9){
+            Robot.shootSystem.frontSpeed = .9;
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

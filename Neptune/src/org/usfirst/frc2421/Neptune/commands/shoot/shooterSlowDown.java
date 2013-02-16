@@ -20,10 +20,15 @@ public class  shooterSlowDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.shootSystem.speed -= .1;
-        if (Robot.shootSystem.speed < 0) {
-            Robot.shootSystem.speed = 0;
+        Robot.shootSystem.backSpeed -= .1;
+        Robot.shootSystem.frontSpeed -= .1;
+        if (Robot.shootSystem.backSpeed < 0) {
+            Robot.shootSystem.backSpeed = 0;
         }
+        if (Robot.shootSystem.frontSpeed < 0) {
+            Robot.shootSystem.frontSpeed = 0;
+        }
+        finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
