@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
         driveSystem = new DriveSystem();
         cameraSystem = new CameraSystem();
         shootSystem = new ShootSystem();
-        loaderSystem = new LoaderSystem();  
+        loaderSystem = new LoaderSystem();
 
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from

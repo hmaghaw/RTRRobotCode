@@ -8,7 +8,6 @@ import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
 import org.usfirst.frc2421.Neptune.commands.drive.*;
 import org.usfirst.frc2421.Neptune.commands.shoot.*;
 
-
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -18,7 +17,6 @@ public class OI {
     // Driving Control Objects
     public Joystick driveStick;
     public JoystickButton brake, speedToggle;
-    
     //Shooting Control Objects
     public Joystick shooterStick;
     public JoystickButton shootActivate, shootDeactivate, shooterAngleIncrease, shooterAngleDecrease, shootSpeedUp, shootSpeedDown;
@@ -30,25 +28,25 @@ public class OI {
 
         shooterAngleDecrease = new JoystickButton(shooterStick, 10);
         shooterAngleDecrease.whileHeld(new angleDecrease());
-        
+
         shooterAngleIncrease = new JoystickButton(shooterStick, 11);
         shooterAngleIncrease.whileHeld(new angleIncrease());
-        
+
         shootDeactivate = new JoystickButton(shooterStick, 2);
         shootDeactivate.whenPressed(new ShooterEnginesStop());
-        
+
         shootActivate = new JoystickButton(shooterStick, 3);
         shootActivate.whenPressed(new ShooterEnginesGo());
-        
+
         shootSpeedUp = new JoystickButton(shooterStick, 5);
         shootSpeedUp.whenPressed(new shooterSpeedUp());
-        
+
         shootSpeedDown = new JoystickButton(shooterStick, 4);
         shootSpeedDown.whenPressed(new shooterSlowDown());
-        
-        loadDiskButton = new JoystickButton(shooterStick,1);
+
+        loadDiskButton = new JoystickButton(shooterStick, 1);
         loadDiskButton.whenPressed(new loadFrisbee());
-        
+
         // Drive Control Setup
         driveStick = new Joystick(2);
 

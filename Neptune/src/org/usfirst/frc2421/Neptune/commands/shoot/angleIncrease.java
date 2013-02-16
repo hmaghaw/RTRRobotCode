@@ -26,7 +26,7 @@ public class  angleIncrease extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         while(angle < angleTarget){
-            Robot.shootSystem.shooterAngleIncrease();
+            //Robot.shootSystem.shooterAngleIncrease();
             angle = Robot.shootSystem.checkCurrentAngle();
         }
         end = true;

@@ -14,15 +14,14 @@ public class RobotMap {
     //TODO Clean up variable names
     //TODO Does the climb system still need to exist?
     // Driving System Components
+
     public static CANJaguar driveSystemCANJaguarLeft;
     public static CANJaguar driveSystemCANJaguarRight;
-    
     // Shooting System Components
     public static CANJaguar frontShooterWheel;
     public static CANJaguar backShooterWheel;
     public static CANJaguar shootSystemAngleOfFire;
     public static AnalogChannel shootSystemMeasureAngleOfFire;
-
     // Collection System Components
     public static CANJaguar collectionSystemBrush1;
     public static DigitalInput loaderFiredSwitch;
@@ -44,31 +43,31 @@ public class RobotMap {
         }
 
         try {
-            frontShooterWheel = new CANJaguar(3);
+            frontShooterWheel = new CANJaguar(4);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
 
         try {
-            backShooterWheel = new CANJaguar(4); 
+            backShooterWheel = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
-        
-        try { 
+
+        try {
             shootSystemAngleOfFire = new CANJaguar(7);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
 
-        shootSystemMeasureAngleOfFire = new AnalogChannel(10);
+        shootSystemMeasureAngleOfFire = new AnalogChannel(1);
         LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemMeasureAngleOfFire);
-       
-        loaderRestSwitch = new DigitalInput(1,1);
-        loaderFiredSwitch = new DigitalInput(1,2);
-        
+
+        loaderRestSwitch = new DigitalInput(1, 1);
+        loaderFiredSwitch = new DigitalInput(1, 2);
+
         try {
-            loaderMotor = new CANJaguar(6);
+            loaderMotor = new CANJaguar(9);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

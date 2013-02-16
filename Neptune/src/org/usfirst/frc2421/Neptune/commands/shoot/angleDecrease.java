@@ -6,8 +6,8 @@ import org.usfirst.frc2421.Neptune.Robot;
 /**
  *
  */
-public class  angleDecrease extends Command {
-    
+public class angleDecrease extends Command {
+
     double angle;
     double angleTarget;
     boolean end = false;
@@ -25,8 +25,8 @@ public class  angleDecrease extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        while(angle > angleTarget){
-            Robot.shootSystem.shooterAngleIncrease();
+        while (angle > angleTarget) {
+            //Robot.shootSystem.shooterAngleIncrease();
             angle = Robot.shootSystem.checkCurrentAngle();
         }
         end = true;
