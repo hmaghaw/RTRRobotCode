@@ -1,5 +1,6 @@
 package org.usfirst.frc2421.Neptune.subsystems;
 
+import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -15,24 +16,26 @@ public class ShootSystem extends Subsystem {
     public double speed;
     public double angle;    
     
-    public CANJaguar wheel1 = RobotMap.shootSystemWheel1;
-    public CANJaguar wheel2 = RobotMap.shootSystemWheel2;
+    public CANJaguar frontWheel = RobotMap.frontShooterWheel;
+    public CANJaguar backWheel = RobotMap.backShooterWheel;
     public CANJaguar angleOfFire = RobotMap.shootSystemAngleOfFire;
     public AnalogChannel measureAngleOfFire = RobotMap.shootSystemMeasureAngleOfFire;
 
          public void startShooter(double speed){
         try {
-            wheel1.setX(-speed);
-            wheel2.setX(-speed-.15);
+            frontWheel.setX(-speed);
+            backWheel.setX(-speed-.15);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug())       {
+                Log.log(ex.toString());
+            }
         }
-    }
+         }
          
     public void stopShooter(){
         try {
-            wheel1.setX(0);
-            wheel2.setX(0);
+            frontWheel.setX(0);
+            backWheel.setX(0);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
@@ -58,7 +61,8 @@ public class ShootSystem extends Subsystem {
         try {
             angleOfFire.setX(.5);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if(Log.debug());
+            Log.log(ex.toString());
         }
     }
     public double checkCurrentAngle(){
@@ -72,6 +76,12 @@ public class ShootSystem extends Subsystem {
     
     public ITable getTable(){
         ITable table = super.getTable();
+        table.putValue("Front Shooter Wheel ", frontWheel);
+        table.putValue("Back Shooter Wheel", backWheel);
+        table.putValue("Angle Motor", angleOfFire);
+        table.putValue("Angle Motor Encoder", measureAngleOfFire);
+        
+        
         return table;
     }
 }
