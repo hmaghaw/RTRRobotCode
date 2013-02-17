@@ -9,10 +9,9 @@ import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
 
-
 /**
- * This system is used to set and get the speeds of the drive motors
- * This is a constructor for the 2 CAN Jaguars used in the drive system
+ * This system is used to set and get the speeds of the drive motors This is a
+ * constructor for the 2 CAN Jaguars used in the drive system
  */
 public class DriveSystem extends Subsystem {
 
@@ -26,6 +25,7 @@ public class DriveSystem extends Subsystem {
 
     /**
      * This method sets the speed of the drive motors based on the parameters
+     *
      * @param leftSpeed
      * @param rightSpeed
      */
@@ -34,7 +34,7 @@ public class DriveSystem extends Subsystem {
             leftDriveMotor.setX(leftSpeed);
             rightDriveMotor.setX(rightSpeed);
         } catch (CANTimeoutException ex) {
-            if (Log.debug()){
+            if (Log.debug()) {
                 Log.log(ex.toString());
             }
         }
@@ -47,7 +47,7 @@ public class DriveSystem extends Subsystem {
     public void turnRight(double speed) {
         runMotors(0, speed);
     }
-    
+
     /**
      * This method returns the speeds of the motors in the form of a double
      * array called speeds
@@ -60,20 +60,17 @@ public class DriveSystem extends Subsystem {
             speeds[0] = leftDriveMotor.getX();
             speeds[1] = rightDriveMotor.getX();
         } catch (CANTimeoutException ex) {
-            if (Log.debug())
-            Log.log(ex.toString());
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
-                return speeds;
-        
-    }
-    
-    public ITable getTable(){
-        ITable table = super.getTable();
-        SmartDashboard.putData("Left Drive Motor", leftDriveMotor);
-        SmartDashboard.putData("Right Drive Motor",rightDriveMotor);
-        return table;
+        return speeds;
+
     }
 
     public void refreshData() {
+        ITable table = super.getTable();
+        SmartDashboard.putData("Left Drive Motor", leftDriveMotor);
+        SmartDashboard.putData("Right Drive Motor", rightDriveMotor);
     }
 }

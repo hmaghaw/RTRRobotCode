@@ -42,11 +42,8 @@ public class CameraSystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-    public ITable getTable() {
+    public void refreshData() {
         ITable table = super.getTable();
-        return table;
     }
 
-    public void refreshData() {
-    }
 }
