@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class  moveForward extends Command {
+public class MoveForward extends Command {
 
-    public moveForward() {
+    public MoveForward() {
         // Use requires() here to declare subsystem dependencies
     }
 

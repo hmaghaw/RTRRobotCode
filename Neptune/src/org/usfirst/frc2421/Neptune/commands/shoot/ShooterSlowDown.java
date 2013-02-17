@@ -6,9 +6,9 @@ import org.usfirst.frc2421.Neptune.Robot;
 /**
  *
  */
-public class shooterSlowDown extends Command {
+public class ShooterSlowDown extends Command {
 
-    public shooterSlowDown() {
+    public ShooterSlowDown() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.shootSystem);
     }

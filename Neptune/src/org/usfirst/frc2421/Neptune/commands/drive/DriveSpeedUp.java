@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class  toggleSpeed extends Command {
+public class DriveSpeedUp extends Command {
     private boolean finished;
 
-    public toggleSpeed() {
+    public DriveSpeedUp() {
         // Use requires() here to declare subsystem dependencies
     }
 

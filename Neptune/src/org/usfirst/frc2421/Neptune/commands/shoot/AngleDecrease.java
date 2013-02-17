@@ -6,13 +6,13 @@ import org.usfirst.frc2421.Neptune.Robot;
 /**
  *
  */
-public class angleDecrease extends Command {
+public class AngleDecrease extends Command {
 
     double angle;
     double angleTarget;
     boolean end = false;
 
-    public angleDecrease() {
+    public AngleDecrease() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.shootSystem);
     }
