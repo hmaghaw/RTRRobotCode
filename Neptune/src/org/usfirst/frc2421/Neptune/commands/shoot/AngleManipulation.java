@@ -14,6 +14,7 @@ public class AngleManipulation extends Command {
         requires(Robot.shootSystem);
     }
     private double angle;
+    private double joystickValue;
     // Called just before this Command runs the first time
     protected void initialize() {
         Robot.shootSystem.angle = Robot.shootSystem.measureAngleOfFire.getAverageValue() * 72;
@@ -43,7 +44,18 @@ public class AngleManipulation extends Command {
             } catch (Exception ex) {
             }
        }*/
-       Robot.shootSystem.angle = Robot.shootSystem.measureAngleOfFire.getAverageValue() * 72;
+       //Robot.shootSystem.angle = Robot.shootSystem.measureAngleOfFire.getAverageValue() * 72;
+        joystickValue = Robot.oi.shooterStick.getY();
+        
+        if(joystickValue > .2){
+            Robot.shootSystem.shooterAngleIncrease(joystickValue);
+        }
+        else if(joystickValue < -.2){
+            Robot.shootSystem.shooterAngleDecrease(joystickValue);
+        }
+        else{
+            Robot.shootSystem.stopAngleMotor();
+        }
     }
         
     protected boolean isFinished() {

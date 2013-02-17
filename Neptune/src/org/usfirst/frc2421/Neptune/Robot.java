@@ -4,12 +4,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
 import org.usfirst.frc2421.Neptune.commands.TeleopCommand;
-import org.usfirst.frc2421.Neptune.commands.loader.loadFrisbee;
 import org.usfirst.frc2421.Neptune.subsystems.CameraSystem;
-import org.usfirst.frc2421.Neptune.subsystems.LoaderSystem;
 import org.usfirst.frc2421.Neptune.subsystems.DriveSystem;
+import org.usfirst.frc2421.Neptune.subsystems.LoaderSystem;
 import org.usfirst.frc2421.Neptune.subsystems.ShootSystem;
 
 /**
@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
         driveSystem = new DriveSystem();
         cameraSystem = new CameraSystem();
         shootSystem = new ShootSystem();
-        loaderSystem = new LoaderSystem();  
+        loaderSystem = new LoaderSystem();
 
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from
@@ -88,6 +88,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        //SmartDashboard.putData("Drive System", driveSystem);
+        SmartDashboard.putData("Shoot System", shootSystem);
+        SmartDashboard.putData("Load System", loaderSystem);
+        //SmartDashboard.putData("Camera System", cameraSystem);
     }
 
     /**

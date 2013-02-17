@@ -1,28 +1,40 @@
-package org.usfirst.frc2421.Neptune.commands.drive;
+package org.usfirst.frc2421.Neptune.commands.shoot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc2421.Neptune.Robot;
 
 /**
  *
  */
-public class  toggleSpeed extends Command {
-    private boolean finished;
+public class AngleDecrease extends Command {
 
-    public toggleSpeed() {
+    double angle;
+    double angleTarget;
+    boolean end = false;
+
+    public AngleDecrease() {
         // Use requires() here to declare subsystem dependencies
+        requires(Robot.shootSystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        angle = Robot.shootSystem.checkCurrentAngle();
+        angleTarget = angle - .1;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        while (angle > angleTarget) {
+            //Robot.shootSystem.shooterAngleIncrease();
+            angle = Robot.shootSystem.checkCurrentAngle();
+        }
+        end = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;
+        return end;
     }
 
     // Called once after isFinished returns true

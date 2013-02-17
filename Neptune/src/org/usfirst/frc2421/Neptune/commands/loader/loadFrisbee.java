@@ -28,43 +28,33 @@ public class loadFrisbee extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     public void execute() {
-        if (Robot.loaderSystem.getRestSwitch() & !hasLoaded) {
-            Robot.loaderSystem.startLoaderArm(-.5);
 
-        } else if (Robot.loaderSystem.getFiredSwitch()) {
+        if (!hasLoaded && !Robot.loaderSystem.getFiredSwitch()) {
             Robot.loaderSystem.startLoaderArm(.5);
-            hasLoaded = false;
+        } else if (Robot.loaderSystem.getFiredSwitch() && !hasLoaded) {
+            Robot.loaderSystem.startLoaderArm(-.5);
+            hasLoaded = true;
 
         } else if (Robot.loaderSystem.getRestSwitch() && hasLoaded) {
             Robot.loaderSystem.stopArm();
             finished = true;
         }
-//        if (hasLoaded && !Robot.loaderSystem.getFiredSwitch()) {
-//            Robot.loaderSystem.startLoaderArm(-.5);
-//        }
-//        if (Robot.loaderSystem.getFiredSwitch() && hasLoaded) {
-//            Robot.loaderSystem.stopArm();
-//            hasLoaded = false;
-//        }
-//        if (Robot.loaderSystem.getFiredSwitch() && !hasLoaded) {
-//            Robot.loaderSystem.startLoaderArm(.5);
-//        }
-//        if (Robot.loaderSystem.getRestSwitch() && !hasLoaded) {
-//            Robot.loaderSystem.stopArm();        
-//            end = true;
     }
-}
-protected boolean isFinished() {
+
+    protected boolean isFinished() {
         return finished;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.loaderSystem.stopMotor();
+        Robot.loaderSystem.stopArm();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        while (!Robot.loaderSystem.getRestSwitch()) { // Add limit/timeout
+            Robot.loaderSystem.startLoaderArm(.5);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class RobotMap {
     public static Relay lightRelay;
     public static AxisCamera camera;
     // Driving System Components
+
     public static CANJaguar driveSystemCANJaguarLeft;
     public static CANJaguar driveSystemCANJaguarRight;
     // Shooting System Components
@@ -59,7 +60,7 @@ public class RobotMap {
 
         // Shoot System Components
         try {
-            frontShooterWheel = new CANJaguar(3);
+            frontShooterWheel = new CANJaguar(4);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -67,7 +68,7 @@ public class RobotMap {
         }
 
         try {
-            backShooterWheel = new CANJaguar(4);
+            backShooterWheel = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -82,15 +83,16 @@ public class RobotMap {
             }
         }
 
-        shootSystemMeasureAngleOfFire = new AnalogChannel(10);
+        shootSystemMeasureAngleOfFire = new AnalogChannel(1);
         LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemMeasureAngleOfFire);
 
         // Loader System Components
+
         loaderRestSwitch = new DigitalInput(1, 1);
         loaderFiredSwitch = new DigitalInput(1, 2);
 
         try {
-            loaderMotor = new CANJaguar(6);
+            loaderMotor = new CANJaguar(9);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());

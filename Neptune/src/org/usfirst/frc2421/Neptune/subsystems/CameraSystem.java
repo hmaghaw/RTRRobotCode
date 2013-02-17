@@ -13,11 +13,11 @@ import org.usfirst.frc2421.Neptune.utils.Scores;
  * TODO Description
  */
 public class CameraSystem extends Subsystem {
+
     public final AxisCamera camera;
     public final CriteriaCollection cc;
     public Scores latestScores;
     public Relay lightRelay;
-    
 
     public CameraSystem() {
         camera = RobotMap.camera;  // get an instance of the camera
@@ -27,17 +27,16 @@ public class CameraSystem extends Subsystem {
     }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public void toggleLight(){
-        if (lightRelay.get() == Relay.Value.kOff){
+
+    public void toggleLight() {
+        if (lightRelay.get() == Relay.Value.kOff) {
             lightRelay.set(Relay.Value.kOn);
-        }
-        else {
+        } else {
             lightRelay.set(Relay.Value.kOff);
         }
-            
+
     }
-    
-    
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
