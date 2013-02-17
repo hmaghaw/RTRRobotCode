@@ -46,4 +46,7 @@ public class CameraSystem extends Subsystem {
         ITable table = super.getTable();
         return table;
     }
+
+    public void refreshData() {
+    }
 }

@@ -73,4 +73,7 @@ public class DriveSystem extends Subsystem {
         SmartDashboard.putData("Right Drive Motor",rightDriveMotor);
         return table;
     }
+
+    public void refreshData() {
+    }
 }
