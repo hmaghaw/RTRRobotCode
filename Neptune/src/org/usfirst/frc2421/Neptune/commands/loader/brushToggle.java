@@ -5,7 +5,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class  brushToggle extends Command {
+public class brushToggle extends Command {
+
     private boolean finished;
 
     public brushToggle() {

@@ -7,13 +7,14 @@ import org.usfirst.frc2421.Neptune.Robot;
  *
  * @author Kal
  */
-public class decreaseCount extends Command{
+public class decreaseCount extends Command {
+
     public decreaseCount() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(Robot.loaderSystem);
         Robot.loaderSystem.numOfFrisbees--;
-    } 
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {

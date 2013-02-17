@@ -34,7 +34,7 @@ public class loadFrisbee extends Command {
         } else if (Robot.loaderSystem.getFiredSwitch()) {
             Robot.loaderSystem.startLoaderArm(.5);
             hasLoaded = false;
-            
+
         } else if (Robot.loaderSystem.getRestSwitch() && hasLoaded) {
             Robot.loaderSystem.stopArm();
             finished = true;
