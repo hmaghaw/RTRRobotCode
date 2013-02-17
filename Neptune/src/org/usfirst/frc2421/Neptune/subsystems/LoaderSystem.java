@@ -26,6 +26,7 @@ public class LoaderSystem extends Subsystem {
     public int numOfFrisbees = 0;
     
     public LoaderSystem(){
+        
     }
 
     public void initDefaultCommand() {
@@ -69,14 +70,11 @@ public class LoaderSystem extends Subsystem {
         numOfFrisbees++;
     }
     
-    public ITable getTable(){
-        ITable table = super.getTable();
-        SmartDashboard.putData("Load Bay Status", opticalSensor);
+    public void refreshData(){
+        //SmartDashboard.putData("Load Bay Status", opticalSensor);
         SmartDashboard.putData("Arm rest switch", restLimitSwitch);
         SmartDashboard.putData("Arm fired switch", firedLimitSwitch);
         SmartDashboard.putData("Arm motor", loaderMotor);
-        
-        return table;
     }
 }
 
