@@ -1,6 +1,8 @@
 package org.usfirst.frc2421.Neptune;
 
+import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -13,6 +15,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
     //TODO Clean up variable names
     //TODO Does the climb system still need to exist?
+    //Camera System Components
+
+    public static Relay lightRelay;
+    public static AxisCamera camera;
     // Driving System Components
 
     public static CANJaguar driveSystemCANJaguarLeft;
@@ -30,38 +36,57 @@ public class RobotMap {
     public static DigitalInput loaderOpticalSensor;
 
     public static void init() {
+        // Camera System Components
+        camera = AxisCamera.getInstance();
+        lightRelay = new Relay(1);
+
+
+        // Drive System Components
         try {
             driveSystemCANJaguarLeft = new CANJaguar(16);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace(); //We should really do better than just 
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
 
         try {
             driveSystemCANJaguarRight = new CANJaguar(16);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
 
+        // Shoot System Components
         try {
             frontShooterWheel = new CANJaguar(4);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
 
         try {
             backShooterWheel = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
 
         try {
             shootSystemAngleOfFire = new CANJaguar(7);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
 
         shootSystemMeasureAngleOfFire = new AnalogChannel(1);
         LiveWindow.addActuator("ShootSystem", "Angle Motor", shootSystemMeasureAngleOfFire);
+
+        // Loader System Components
 
         loaderRestSwitch = new DigitalInput(1, 1);
         loaderFiredSwitch = new DigitalInput(1, 2);
@@ -69,7 +94,9 @@ public class RobotMap {
         try {
             loaderMotor = new CANJaguar(9);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            if (Log.debug()) {
+                Log.log(ex.toString());
+            }
         }
     }
 }
