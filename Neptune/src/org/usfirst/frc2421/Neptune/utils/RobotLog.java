@@ -91,7 +91,8 @@ public class RobotLog {
         return RobotLogHolder.INSTANCE;
     }
 
-    private static class RobotLogHolder {
+    static class RobotLogHolder {
+
         private static final RobotLog INSTANCE = new RobotLog();
     }
 }
