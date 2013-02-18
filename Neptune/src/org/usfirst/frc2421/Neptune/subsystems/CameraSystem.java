@@ -36,6 +36,29 @@ public class CameraSystem extends Subsystem {
         }
 
     }
+    
+    public double getScoresData(String query, Scores score){
+        query = query.toUpperCase();
+        
+        if(query.equals("rectangularity".toUpperCase())){
+            return score.rectangularity;
+        }
+        else if(query.equals("aspectRatioInner".toUpperCase())){
+            return score.aspectRatioInner;
+        }
+        else if(query.equals("aspectRatioOuter".toUpperCase())){
+            return score.aspectRatioOuter;
+        }
+        else if(query.equals("xEdge".toUpperCase())){
+            return score.xEdge;
+        }
+        else if(query.equals("yEdge".toUpperCase())){
+            return score.yEdge;
+        }
+        else{
+            return 0.0;
+        }
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
