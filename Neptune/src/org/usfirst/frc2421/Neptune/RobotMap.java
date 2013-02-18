@@ -43,7 +43,7 @@ public class RobotMap {
 
         // Drive System Components
         try {
-            driveSystemCANJaguarLeft = new CANJaguar(16);
+            driveSystemCANJaguarLeft = new CANJaguar(7);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -51,7 +51,7 @@ public class RobotMap {
         }
 
         try {
-            driveSystemCANJaguarRight = new CANJaguar(16);
+            driveSystemCANJaguarRight = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -60,7 +60,7 @@ public class RobotMap {
 
         // Shoot System Components
         try {
-            frontShooterWheel = new CANJaguar(4);
+            frontShooterWheel = new CANJaguar(9);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -68,7 +68,7 @@ public class RobotMap {
         }
 
         try {
-            backShooterWheel = new CANJaguar(6);
+            backShooterWheel = new CANJaguar(10);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -76,7 +76,7 @@ public class RobotMap {
         }
 
         try {
-            shootSystemAngleOfFire = new CANJaguar(7);
+            shootSystemAngleOfFire = new CANJaguar(5);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());
@@ -92,7 +92,7 @@ public class RobotMap {
         loaderFiredSwitch = new DigitalInput(1, 2);
 
         try {
-            loaderMotor = new CANJaguar(9);
+            loaderMotor = new CANJaguar(4);
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());

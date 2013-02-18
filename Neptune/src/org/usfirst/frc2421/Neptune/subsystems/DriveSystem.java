@@ -17,6 +17,12 @@ public class DriveSystem extends Subsystem {
 
     public CANJaguar leftDriveMotor = RobotMap.driveSystemCANJaguarLeft;
     public CANJaguar rightDriveMotor = RobotMap.driveSystemCANJaguarRight;
+    public boolean enabled = true;
+    
+    public DriveSystem(){
+    enabled &= (leftDriveMotor != null);
+    enabled &= (rightDriveMotor != null);
+}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

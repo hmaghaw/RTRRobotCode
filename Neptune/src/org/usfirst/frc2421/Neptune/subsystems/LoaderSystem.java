@@ -24,9 +24,13 @@ public class LoaderSystem extends Subsystem {
     CANJaguar loaderMotor = RobotMap.loaderMotor;
     //This int shows how many frisbees are in the loading bay
     public int numOfFrisbees = 0;
+    public boolean enabled = true;
     
     public LoaderSystem(){
-        
+        enabled &= (opticalSensor != null);
+        enabled &= (restLimitSwitch != null);
+        enabled &= (firedLimitSwitch != null);
+        enabled &= (loaderMotor != null);
     }
 
     public void initDefaultCommand() {

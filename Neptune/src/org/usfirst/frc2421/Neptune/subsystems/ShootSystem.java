@@ -26,6 +26,14 @@ public class ShootSystem extends Subsystem {
     //angle manipulator/checker
     public CANJaguar angleOfFire = RobotMap.shootSystemAngleOfFire;
     public AnalogChannel measureAngleOfFire = RobotMap.shootSystemMeasureAngleOfFire;
+    public boolean enabled = true;
+    
+    public ShootSystem(){
+        enabled &= (frontWheel != null);
+        enabled &= (backWheel != null);
+        enabled &= (angleOfFire != null);
+        enabled &= (measureAngleOfFire != null);
+    }
     
     public void startShooter() {
 
