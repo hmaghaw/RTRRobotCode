@@ -10,8 +10,8 @@ import org.usfirst.frc2421.Neptune.Robot;
  */
 public class loadFrisbee extends Command {
 
-    public boolean hasLoaded;
-    private boolean finished;
+    public static final int DIRECTION = 1; //sets direction to forward(1) or backward(-1)
+    public static final double SPEED = .5;
 
     public loadFrisbee() {
         requires(Robot.loaderSystem);
@@ -19,6 +19,7 @@ public class loadFrisbee extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+
         finished = false;
         hasLoaded = false;
         for (int i = 0; i > 50; i++) {
@@ -27,25 +28,18 @@ public class loadFrisbee extends Command {
             }
         }
         Robot.loaderSystem.stopArm();
+//        resetArm();
+
     }
 
 // Called repeatedly when this Command is scheduled to run
     public void execute() {
-
-        if (!hasLoaded && !Robot.loaderSystem.getFiredSwitch()) {
-            Robot.loaderSystem.startLoaderArm(.5);
-        } else if (Robot.loaderSystem.getFiredSwitch() && !hasLoaded) {
-            Robot.loaderSystem.startLoaderArm(-.5);
-            hasLoaded = true;
-
-        } else if (Robot.loaderSystem.getRestSwitch() && hasLoaded) {
-            Robot.loaderSystem.stopArm();
-            finished = true;
-        }
+        launchFrisbee();
+        resetArm();
     }
 
     protected boolean isFinished() {
-        return finished;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -59,5 +53,19 @@ public class loadFrisbee extends Command {
         while (!Robot.loaderSystem.getRestSwitch()) { // Add limit/timeout
             Robot.loaderSystem.startLoaderArm(.5);
         }
+    }
+
+    public void resetArm() {
+        while (!Robot.loaderSystem.getRestSwitch()) {
+            Robot.loaderSystem.startLoaderArm(-DIRECTION * SPEED);
+        }
+        Robot.loaderSystem.stopArm();
+    }
+
+    public void launchFrisbee() {
+        while (!Robot.loaderSystem.getFiredSwitch()) {
+            Robot.loaderSystem.startLoaderArm(DIRECTION * SPEED);
+        }
+        Robot.loaderSystem.stopArm();
     }
 }
