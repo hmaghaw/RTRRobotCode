@@ -21,8 +21,8 @@ public class ShootSystem extends Subsystem {
     public double speedSeparation = .15; //percent the front wheel spins faster than the back wheel 
     public double angle;    //current angle of the shooter Needs to be implemented
     //initialize shooter wheels
-    public CANJaguar frontWheel = RobotMap.frontShooterWheel;
-    public CANJaguar backWheel = RobotMap.backShooterWheel;
+    public CANJaguar frontWheel = RobotMap.outerShooterWheel;
+    public CANJaguar backWheel = RobotMap.innerShooterWheel;
     //angle manipulator/checker
     public CANJaguar angleOfFire = RobotMap.shootSystemAngleOfFire;
     public AnalogChannel measureAngleOfFire = RobotMap.shootSystemMeasureAngleOfFire;

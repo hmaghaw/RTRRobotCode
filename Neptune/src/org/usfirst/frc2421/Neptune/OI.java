@@ -61,8 +61,8 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("moveForward", new MoveForward());
         SmartDashboard.putData("moveBack", new MoveBackward());
-        SmartDashboard.putData("turnLeft", new turnLeft());
-        SmartDashboard.putData("turnRight", new turnRight());
+        SmartDashboard.putData("turnLeft", new TurnLeft());
+        SmartDashboard.putData("turnRight", new TurnRight());
         SmartDashboard.putData("toggleSpeed", new DriveSpeedUp());
         SmartDashboard.putData("loadFrisbee", new loadFrisbee());
         SmartDashboard.putData("angleIncrease", new AngleIncrease());

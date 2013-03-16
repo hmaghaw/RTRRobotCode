@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class turnLeft extends Command {
+public class TurnLeft extends Command {
 
-    public turnLeft() {
+    public TurnLeft() {
         // Use requires() here to declare subsystem dependencies
     }
 

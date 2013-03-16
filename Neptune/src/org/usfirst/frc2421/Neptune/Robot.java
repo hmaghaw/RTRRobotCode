@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
         RobotMap.init();
 
         driveSystem = new DriveSystem();
-        cameraSystem = new CameraSystem();
+        //cameraSystem = new CameraSystem();
         shootSystem = new ShootSystem();
         loaderSystem = new LoaderSystem();
 
@@ -88,10 +88,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        //SmartDashboard.putData("Drive System", driveSystem);
-        SmartDashboard.putData("Shoot System", shootSystem);
-        SmartDashboard.putData("Load System", loaderSystem);
-        //SmartDashboard.putData("Camera System", cameraSystem);
+        loaderSystem.refreshData();
+        
     }
 
     /**
@@ -99,5 +97,12 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    public void refreshSubsystemData(){
+        //shootSystem.refreshData();
+        //cameraSystem.refreshData();
+        //loaderSystem.refreshData();
+        //driveSystem.refreshData();
     }
 }

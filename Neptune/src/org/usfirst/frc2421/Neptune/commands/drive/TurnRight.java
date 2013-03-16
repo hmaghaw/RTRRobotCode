@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class turnRight extends Command {
+public class TurnRight extends Command {
     private boolean finished;
 
-    public turnRight() {
+    public TurnRight() {
         // Use requires() here to declare subsystem dependencies
     }
 

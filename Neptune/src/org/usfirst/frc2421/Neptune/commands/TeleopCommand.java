@@ -6,6 +6,7 @@ package org.usfirst.frc2421.Neptune.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import org.usfirst.frc2421.Neptune.Robot;
 import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
 import org.usfirst.frc2421.Neptune.commands.shoot.AngleManipulation;
 
@@ -19,18 +20,22 @@ public class TeleopCommand extends Command {
     Command shootCommand;
 
     public TeleopCommand() {
-        finished = false;
     }
 
     protected void initialize() {
-        Scheduler.getInstance().add(new AngleManipulation());
+        if (!Robot.loaderSystem.getRestSwitch()) {
+            Robot.loaderSystem.startLoaderArm(-.5);
+        }
     }
 
     protected void execute() {
-        if (!finished) {
-            //Scheduler.getInstance().add(new TeleDrive());
-            finished = true;
+        if (Robot.driveSystem.enabled) {
+            Scheduler.getInstance().add(new TeleDrive());
         }
+        if (Robot.shootSystem.enabled) {
+            Scheduler.getInstance().add(new AngleManipulation());
+        }
+        finished = true;
     }
 
     protected boolean isFinished() {

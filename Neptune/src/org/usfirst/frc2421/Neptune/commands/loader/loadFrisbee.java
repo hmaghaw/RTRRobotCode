@@ -21,12 +21,15 @@ public class loadFrisbee extends Command {
     protected void initialize() {
         finished = false;
         hasLoaded = false;
-        while (!Robot.loaderSystem.getRestSwitch()) { // Add limit/timeout
-            Robot.loaderSystem.startLoaderArm(.5);
+        for (int i = 0; i > 50; i++) {
+            if (!Robot.loaderSystem.getRestSwitch()) { // Add limit/timeout
+                Robot.loaderSystem.startLoaderArm(-.5);
+            }
         }
+        Robot.loaderSystem.stopArm();
     }
 
-    // Called repeatedly when this Command is scheduled to run
+// Called repeatedly when this Command is scheduled to run
     public void execute() {
 
         if (!hasLoaded && !Robot.loaderSystem.getFiredSwitch()) {
