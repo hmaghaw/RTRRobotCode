@@ -88,5 +88,11 @@
                 <source-level>1.4</source-level>
             </compilation-unit>
         </java-data>
+<<<<<<< HEAD
+=======
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>frisbees</word>
+        </spellchecker-wordlist>
+>>>>>>> origin/temp-master
     </configuration>
 </project>
