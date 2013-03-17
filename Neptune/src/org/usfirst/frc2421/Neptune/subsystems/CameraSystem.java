@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.image.CriteriaCollection;
 import edu.wpi.first.wpilibj.image.NIVision.MeasurementType;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
+import org.usfirst.frc2421.Neptune.utils.RobotUtils;
 import org.usfirst.frc2421.Neptune.utils.Scores;
 
 /**
@@ -34,7 +35,6 @@ public class CameraSystem extends Subsystem {
         } else {
             lightRelay.set(Relay.Value.kOff);
         }
-
     }
     
     public double getScoresData(String query, Scores score){
@@ -66,7 +66,7 @@ public class CameraSystem extends Subsystem {
     }
 
     public void refreshData() {
-        //pass
+        RobotUtils.tryPutData("Head Light", lightRelay);
     }
 
 }

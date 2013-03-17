@@ -21,6 +21,8 @@ public class OI {
     public Joystick shooterStick;
     public JoystickButton shootActivate, shootDeactivate, shooterAngleIncrease, shooterAngleDecrease, shootSpeedUp, shootSpeedDown;
     public JoystickButton loadDiskButton;
+    private final JoystickButton turnLightOff;
+    private final JoystickButton turnLightOn;
 
     public OI() {
         // Shooting Control Setup
@@ -55,6 +57,9 @@ public class OI {
 
         brake = new JoystickButton(driveStick, 1);
 
+        // Camera Control Setup
+        turnLightOn = new JoystickButton(shooterStick, 6);
+        turnLightOff = new JoystickButton(shooterStick, 7);
 
         // SmartDashboard Buttons. Each of these creates a button on the
         // smartdashboard which, when pressed, launches the command.
@@ -71,5 +76,6 @@ public class OI {
         SmartDashboard.putData("shooterEnginesGo", new ShooterEnginesGo());
         SmartDashboard.putData("shooterSlowDown", new ShooterSlowDown());
         SmartDashboard.putData("shooterSpeedUp", new ShooterSpeedUp());
+        SmartDashboard.putData("AngleManipulation", new AngleManipulation());
     }
 }

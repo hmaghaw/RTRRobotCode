@@ -37,7 +37,7 @@ public class RobotMap {
 
     public static void init() {
         // Camera System Components
-        //camera = AxisCamera.getInstance();
+        camera = AxisCamera.getInstance();
         lightRelay = new Relay(1);
 
 
@@ -76,7 +76,7 @@ public class RobotMap {
         }
 
         try {
-            shootSystemAngleOfFire = new CANJaguar(5);
+            shootSystemAngleOfFire = new CANJaguar(6);//temperarily changed: CHANGE BACK TO 5 
         } catch (CANTimeoutException ex) {
             if (Log.debug()) {
                 Log.log(ex.toString());

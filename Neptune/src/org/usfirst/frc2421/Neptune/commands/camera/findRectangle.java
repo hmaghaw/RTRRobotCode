@@ -6,6 +6,7 @@ package org.usfirst.frc2421.Neptune.commands.camera;
 
 import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.camera.AxisCameraException;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.image.BinaryImage;
 import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
@@ -18,7 +19,7 @@ import org.usfirst.frc2421.Neptune.utils.Scores;
  *
  * @author Jack
  */
-public class findRectangle {
+public class findRectangle extends Command{
 
     public findRectangle() {
         // Use requires() here to declare subsystem dependencies
@@ -42,7 +43,7 @@ public class findRectangle {
                  *
                  */
                 ColorImage image = Robot.cameraSystem.camera.getImage();     // comment if using stored images
-                BinaryImage thresholdImage = image.thresholdHSV(60, 100, 90, 255, 20, 255);   // keep only red objects
+                BinaryImage thresholdImage = image.thresholdHSV(60, 150, 90, 255, 20, 255);   // keep only red objects
                 BinaryImage convexHullImage = thresholdImage.convexHull(false);          // fill in occluded rectangles
                 BinaryImage filteredImage = convexHullImage.particleFilter(Robot.cameraSystem.cc);           // filter out small particles
 
@@ -63,13 +64,13 @@ public class findRectangle {
                     } else if (CameraUtilities.scoreCompare(scores[i], true)) {
                         Robot.cameraSystem.latestScores = scores[i];
                     } else {
-                        if (Log.verbose()) {
+                        if (true) {//TODO change this back to log.verbose
                             Log.log("particle: " + i + "is not a goal  centerX: " + report.center_mass_x_normalized + "centerY: " + report.center_mass_y_normalized);
                         }
                     }
-                    if (Log.verbose()) {
-                        Log.log("rect: " + scores[i].rectangularity + "ARinner: " + scores[i].aspectRatioInner);
-                        System.out.println("ARouter: " + scores[i].aspectRatioOuter + "xEdge: " + scores[i].xEdge + "yEdge: " + scores[i].yEdge);
+                    if (true) { //TODO change this back to log.verbose
+                        Log.log(" rect: " + scores[i].rectangularity + "ARinner: " + scores[i].aspectRatioInner);
+                        System.out.println(" ARouter: " + scores[i].aspectRatioOuter + " xEdge: " + scores[i].xEdge + " yEdge: " + scores[i].yEdge);
                     }
                 }
 

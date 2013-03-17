@@ -1,5 +1,6 @@
 package org.usfirst.frc2421.Neptune;
 
+import com.sun.squawk.debugger.Log;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -37,7 +38,7 @@ public class Robot extends IterativeRobot {
         RobotMap.init();
 
         driveSystem = new DriveSystem();
-        //cameraSystem = new CameraSystem();
+        cameraSystem = new CameraSystem();
         shootSystem = new ShootSystem();
         loaderSystem = new LoaderSystem();
 
@@ -101,7 +102,7 @@ public class Robot extends IterativeRobot {
     
     public void refreshSubsystemData(){
         shootSystem.refreshData();
-        //cameraSystem.refreshData();
+        cameraSystem.refreshData();
         loaderSystem.refreshData();
         driveSystem.refreshData();
     }
