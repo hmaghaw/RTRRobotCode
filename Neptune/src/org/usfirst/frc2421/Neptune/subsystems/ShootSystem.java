@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
+import org.usfirst.frc2421.Neptune.utils.RobotUtils;
 
 /**
  * TODO Description
@@ -146,14 +147,11 @@ public class ShootSystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public ITable getTable() {
-        ITable table = super.getTable();
-        SmartDashboard.putData("Front Shooter Wheel ", frontWheel);
-        SmartDashboard.putData("Back Shooter Wheel", backWheel);
-        SmartDashboard.putData("Angle Motor", angleOfFire);
-        SmartDashboard.putData("Angle Motor Encoder", measureAngleOfFire);
-        
-        
-        return table;
+    public void refreshData() {
+        RobotUtils.tryPutData("Front Shooter Wheel ", frontWheel);
+        RobotUtils.tryPutData("Back Shooter Wheel", backWheel);
+        RobotUtils.tryPutData("Angle Motor", angleOfFire);
+        RobotUtils.tryPutData("Angle Motor Encoder", checkCurrentAngle());
     }
+
 }

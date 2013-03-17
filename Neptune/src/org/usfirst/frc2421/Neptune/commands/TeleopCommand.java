@@ -23,7 +23,7 @@ public class TeleopCommand extends Command {
     }
 
     protected void initialize() {
-        if (!Robot.loaderSystem.getRestSwitch()) {
+        if (!Robot.loaderSystem.getRestSwitch() && Robot.loaderSystem.enabled) {
             Robot.loaderSystem.startLoaderArm(-.5);
         }
     }

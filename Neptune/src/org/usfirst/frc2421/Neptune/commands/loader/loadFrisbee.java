@@ -12,6 +12,8 @@ public class loadFrisbee extends Command {
 
     public static final int DIRECTION = 1; //sets direction to forward(1) or backward(-1)
     public static final double SPEED = .5;
+    private boolean finished;
+    private boolean hasLoaded;
 
     public loadFrisbee() {
         requires(Robot.loaderSystem);

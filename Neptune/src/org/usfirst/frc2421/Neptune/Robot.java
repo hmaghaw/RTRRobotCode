@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        loaderSystem.refreshData();
+        refreshSubsystemData();
         
     }
 
@@ -100,9 +100,9 @@ public class Robot extends IterativeRobot {
     }
     
     public void refreshSubsystemData(){
-        //shootSystem.refreshData();
+        shootSystem.refreshData();
         //cameraSystem.refreshData();
-        //loaderSystem.refreshData();
-        //driveSystem.refreshData();
+        loaderSystem.refreshData();
+        driveSystem.refreshData();
     }
 }

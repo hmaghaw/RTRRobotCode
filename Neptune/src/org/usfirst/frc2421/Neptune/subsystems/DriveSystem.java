@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.commands.drive.TeleDrive;
+import org.usfirst.frc2421.Neptune.utils.RobotUtils;
 
 /**
  * This system is used to set and get the speeds of the drive motors This is a
@@ -75,8 +76,7 @@ public class DriveSystem extends Subsystem {
     }
 
     public void refreshData() {
-        ITable table = super.getTable();
-        SmartDashboard.putData("Left Drive Motor", leftDriveMotor);
-        SmartDashboard.putData("Right Drive Motor", rightDriveMotor);
+        RobotUtils.tryPutData("Left Drive Motor", leftDriveMotor);
+        RobotUtils.tryPutData("Right Drive Motor", rightDriveMotor);
     }
 }

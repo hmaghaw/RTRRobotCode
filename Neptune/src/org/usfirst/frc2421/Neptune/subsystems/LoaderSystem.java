@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.Robot;
 import org.usfirst.frc2421.Neptune.RobotMap;
+import org.usfirst.frc2421.Neptune.utils.RobotUtils;
 
 
 
@@ -75,9 +76,9 @@ public class LoaderSystem extends Subsystem {
     
     public void refreshData(){
         //SmartDashboard.putData("Load Bay Status", opticalSensor);
-        SmartDashboard.putData("Arm rest switch", restLimitSwitch);
-        SmartDashboard.putData("Arm fired switch", firedLimitSwitch);
-        SmartDashboard.putData("Arm motor", loaderMotor);
+        RobotUtils.tryPutData("Arm rest switch", restLimitSwitch);
+        RobotUtils.tryPutData("Arm fired switch", firedLimitSwitch);
+        RobotUtils.tryPutData("Arm motor", loaderMotor);
     }
 }
 
