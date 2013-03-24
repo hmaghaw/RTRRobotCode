@@ -32,7 +32,7 @@ public class TeleopCommand extends Command {
         if (true)
         {
             Robot.cameraSystem.lightRelay.set(Relay.Value.kOn);
-            Scheduler.getInstance().add(new findRectangle());
+            //Scheduler.getInstance().add(new findRectangle());
         }
     }
 
@@ -40,9 +40,9 @@ public class TeleopCommand extends Command {
         if (Robot.driveSystem.enabled) {
             Scheduler.getInstance().add(new TeleDrive());
         }
-        if (Robot.shootSystem.enabled) {
+        //if (Robot.shootSystem.enabled) {
             Scheduler.getInstance().add(new AngleManipulation());
-        }
+        //}
         finished = true;
     }
 

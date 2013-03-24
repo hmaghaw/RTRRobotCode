@@ -19,7 +19,7 @@ public class AngleIncrease extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        angle = Robot.shootSystem.checkCurrentAngle();
+        angle = Robot.shootSystem.getCurrentAngle();
         angleTarget = angle + .1;
     }
 
@@ -27,7 +27,7 @@ public class AngleIncrease extends Command {
     protected void execute() {
         while(angle < angleTarget){
             //Robot.shootSystem.shooterAngleIncrease();
-            angle = Robot.shootSystem.checkCurrentAngle();
+            angle = Robot.shootSystem.getCurrentAngle();
         }
         end = true;
     }

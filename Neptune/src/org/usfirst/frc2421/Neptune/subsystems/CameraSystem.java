@@ -22,6 +22,7 @@ public class CameraSystem extends Subsystem {
 
     public CameraSystem() {
         camera = RobotMap.camera;  // get an instance of the camera
+        //camera = AxisCamera.getInstance("10.24.21.11");
         lightRelay = RobotMap.lightRelay;
         cc = new CriteriaCollection();      // create the criteria for the particle filter
         cc.addCriteria(MeasurementType.IMAQ_MT_AREA, 500, 65535, false);

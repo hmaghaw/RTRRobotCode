@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2421.Neptune.commands.AutonomousCommand;
+import org.usfirst.frc2421.Neptune.commands.camera.findRectangle;
 import org.usfirst.frc2421.Neptune.commands.drive.*;
 import org.usfirst.frc2421.Neptune.commands.loader.loadFrisbee;
 import org.usfirst.frc2421.Neptune.commands.shoot.*;
@@ -20,7 +21,7 @@ public class OI {
     //Shooting Control Objects
     public Joystick shooterStick;
     public JoystickButton shootActivate, shootDeactivate, shooterAngleIncrease, shooterAngleDecrease, shootSpeedUp, shootSpeedDown;
-    public JoystickButton loadDiskButton;
+    public JoystickButton loadDiskButton, findRect;
     private final JoystickButton turnLightOff;
     private final JoystickButton turnLightOn;
 
@@ -28,6 +29,9 @@ public class OI {
         // Shooting Control Setup
         shooterStick = new Joystick(1);
 
+        findRect = new JoystickButton(shooterStick, 8);
+        findRect.whenPressed(new findRectangle());
+        
         shooterAngleDecrease = new JoystickButton(shooterStick, 10);
         shooterAngleDecrease.whileHeld(new AngleDecrease());
 

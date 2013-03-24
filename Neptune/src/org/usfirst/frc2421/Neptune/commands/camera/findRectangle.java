@@ -21,13 +21,17 @@ import org.usfirst.frc2421.Neptune.utils.Scores;
  */
 public class findRectangle extends Command{
 
+    boolean end;
+    
     public findRectangle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        end = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -96,11 +100,12 @@ public class findRectangle extends Command{
 
             }
         }
+        end = true;
     }
 // Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {
-        return false;
+        return end;
     }
 
     // Called once after isFinished returns true

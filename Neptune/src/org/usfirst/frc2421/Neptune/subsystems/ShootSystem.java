@@ -137,9 +137,10 @@ public class ShootSystem extends Subsystem {
         }
     }
     
-    public double checkCurrentAngle() {
+    public double getCurrentAngle() {
         //determies the angle of the motor.
-        return measureAngleOfFire.getAverageVoltage() * 72;
+        angle = measureAngleOfFire.getAverageVoltage() * 72;
+        return angle;
     }
     
     public void initDefaultCommand() {
@@ -151,7 +152,7 @@ public class ShootSystem extends Subsystem {
         RobotUtils.tryPutData("Front Shooter Wheel ", frontWheel);
         RobotUtils.tryPutData("Back Shooter Wheel", backWheel);
         RobotUtils.tryPutData("Angle Motor", angleOfFire);
-        RobotUtils.tryPutData("Angle Motor Encoder", checkCurrentAngle());
+        RobotUtils.tryPutData("Angle Motor Encoder", getCurrentAngle());
     }
 
 }

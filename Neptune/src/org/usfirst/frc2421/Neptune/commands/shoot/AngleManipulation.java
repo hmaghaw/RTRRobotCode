@@ -15,13 +15,18 @@ public class AngleManipulation extends Command {
     }
     private double angle;
     private double joystickValue;
+    private double lowerLimit, upperLimit;
+    
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.shootSystem.angle = Robot.shootSystem.measureAngleOfFire.getAverageValue() * 72;
+        angle = Robot.shootSystem.getCurrentAngle();
+        upperLimit = 70;
+        lowerLimit = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        angle = Robot.shootSystem.getCurrentAngle();
         /*double currentAngle = Robot.shooter.checkGyroAngle();
         double targetAngle = 0;
         double angleSeparation = targetAngle - currentAngle;
@@ -46,14 +51,18 @@ public class AngleManipulation extends Command {
        }*/
        //Robot.shootSystem.angle = Robot.shootSystem.measureAngleOfFire.getAverageValue() * 72;
         joystickValue = Robot.oi.shooterStick.getY();
-        
+       if (angle > lowerLimit && angle < upperLimit) 
+       {
         if(joystickValue > .2){
             Robot.shootSystem.shooterAngleIncrease(joystickValue);
         }
         else if(joystickValue < -.2){
             Robot.shootSystem.shooterAngleDecrease(joystickValue);
         }
-        else{
+            else {
+                Robot.shootSystem.stopAngleMotor();
+            }
+        } else {
             Robot.shootSystem.stopAngleMotor();
         }
     }
