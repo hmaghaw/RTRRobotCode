@@ -19,14 +19,14 @@ import org.usfirst.frc2421.Neptune.utils.Scores;
  *
  * @author Jack
  */
-public class findRectangle extends Command{
-
+public class findRectangle extends Command {
+    
     boolean end;
     
     public findRectangle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        
+        requires(Robot.cameraSystem);
     }
 
     // Called just before this Command runs the first time
@@ -56,25 +56,30 @@ public class findRectangle extends Command{
                 for (int i = 0; i < scores.length; i++) {
                     ParticleAnalysisReport report = filteredImage.getParticleAnalysisReport(i);
                     scores[i] = new Scores();
-
+                    
                     scores[i].rectangularity = CameraUtilities.scoreRectangularity(report);
                     scores[i].aspectRatioOuter = CameraUtilities.scoreAspectRatio(filteredImage, report, i, true);
                     scores[i].aspectRatioInner = CameraUtilities.scoreAspectRatio(filteredImage, report, i, false);
                     scores[i].xEdge = CameraUtilities.scoreXEdge(thresholdImage, report);
                     scores[i].yEdge = CameraUtilities.scoreYEdge(thresholdImage, report);
-
+                    
                     if (CameraUtilities.scoreCompare(scores[i], false)) {
                         Robot.cameraSystem.latestScores = scores[i];
+                        System.out.println("particle: " + i + " is a High Goal\ncenterX: " + report.center_mass_x_normalized + "\ncenterY: " + report.center_mass_y_normalized);
+                        System.out.println("Distance: " + CameraUtilities.computeDistance(thresholdImage, report, i, false));
                     } else if (CameraUtilities.scoreCompare(scores[i], true)) {
                         Robot.cameraSystem.latestScores = scores[i];
+                        System.out.println("particle: " + i + " is a Middle Goal \ncenterX: " + report.center_mass_x_normalized + "\ncenterY: " + report.center_mass_y_normalized);
+                        System.out.println("Distance: " + CameraUtilities.computeDistance(thresholdImage, report, i, true));
                     } else {
-                        if (true) {//TODO change this back to log.verbose
-                            Log.log("particle: " + i + "is not a goal  centerX: " + report.center_mass_x_normalized + "centerY: " + report.center_mass_y_normalized);
+                        if (Log.verbose()) {//TODO change this back to log.verbose
+                            Log.log("particle: " + i + " is not a goal\ncenterX: " + report.center_mass_x_normalized + "\ncenterY: " + report.center_mass_y_normalized);
                         }
                     }
-                    if (true) { //TODO change this back to log.verbose
-                        Log.log(" rect: " + scores[i].rectangularity + "ARinner: " + scores[i].aspectRatioInner);
-                        System.out.println(" ARouter: " + scores[i].aspectRatioOuter + " xEdge: " + scores[i].xEdge + " yEdge: " + scores[i].yEdge);
+                    if (Log.verbose()) { //TODO change this back to log.verbose
+                        Log.log(" rect: " + scores[i].rectangularity + "\nARinner: " + scores[i].aspectRatioInner);
+                        System.out.println(" ARouter: " + scores[i].aspectRatioOuter + "\nxEdge: " + scores[i].xEdge + "\nyEdge: " + scores[i].yEdge);
+                        //System.out.println("centerX: " + report.center_mass_x_normalized + "centerY: " + report.center_mass_y_normalized);
                     }
                 }
 
@@ -88,7 +93,7 @@ public class findRectangle extends Command{
                 convexHullImage.free();
                 thresholdImage.free();
                 image.free();
-
+                
             } catch (AxisCameraException ex) {        // this is needed if the camera.getImage() is called
                 if (Log.debug()) {
                     Log.log(ex.toString());
@@ -97,7 +102,7 @@ public class findRectangle extends Command{
                 if (Log.debug()) {
                     Log.log(ex.toString());
                 }
-
+                
             }
         }
         end = true;

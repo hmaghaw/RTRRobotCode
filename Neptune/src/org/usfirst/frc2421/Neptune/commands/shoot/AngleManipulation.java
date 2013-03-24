@@ -26,6 +26,10 @@ public class AngleManipulation extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        // 'angle' recieves the angle from getCurrentAngle
+        //the first statement decides if the angle is within the limits of the elevation of the shooter.
+        //the second makes the angle of the shooter increase if you move the joystick forward
+        //the elseif makes the angle of the shooter decrease if you move the joystick backward
         angle = Robot.shootSystem.getCurrentAngle();
         /*double currentAngle = Robot.shooter.checkGyroAngle();
         double targetAngle = 0;

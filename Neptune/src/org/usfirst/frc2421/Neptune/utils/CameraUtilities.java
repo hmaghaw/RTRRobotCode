@@ -151,7 +151,7 @@ public class CameraUtilities {
      * with sides x and y where particle area= x*y and particle perimeter= 2x+2y
      *
      * @param image The image containing the particle to score, needed to
-     * performa additional measurements
+     * performs additional measurements
      * @param report The Particle Analysis Report for the particle, used for the
      * width, height, and particle number
      * @param outer	Indicates whether the particle aspect ratio should be
