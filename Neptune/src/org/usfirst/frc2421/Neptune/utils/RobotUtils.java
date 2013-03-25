@@ -29,4 +29,12 @@ public class RobotUtils {
             SmartDashboard.putString(key, "Failed");
         }
     }
+    
+    public static void tryPutData (String key, String data) {
+        try {
+            SmartDashboard.putString(key, data);
+        } catch (NullPointerException e) {
+            SmartDashboard.putString(key, "no goal recognized");
+        }
+    }
 }

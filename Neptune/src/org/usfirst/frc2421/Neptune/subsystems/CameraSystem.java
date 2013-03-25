@@ -19,6 +19,9 @@ public class CameraSystem extends Subsystem {
     public final CriteriaCollection cc;
     public Scores latestScores;
     public Relay lightRelay;
+    
+    public int goalNumber; //0 = no goal, 1 = middle goal, 2 = high goal
+    public String goalString;
 
     public CameraSystem() {
         camera = RobotMap.camera;  // get an instance of the camera
@@ -60,6 +63,19 @@ public class CameraSystem extends Subsystem {
             return 0.0;
         }
     }
+    
+    public String getGoal(int goalNum) {
+        if (goalNum == 2) {
+            goalString = "high";
+        }
+        else if (goalNum == 1) {
+            goalString = "middle";
+        }
+        else {
+            goalString = "not a goal";
+        }
+        return goalString;
+    }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -68,6 +84,8 @@ public class CameraSystem extends Subsystem {
 
     public void refreshData() {
         RobotUtils.tryPutData("Head Light", lightRelay);
+        RobotUtils.tryPutData("Goal", getGoal(goalNumber));
+        
     }
 
 }

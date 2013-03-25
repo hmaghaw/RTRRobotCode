@@ -23,7 +23,7 @@ public class findRectangle extends Command {
 
     boolean end;
     int counter;
-
+   
     public findRectangle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -72,14 +72,17 @@ public class findRectangle extends Command {
 
                     if (CameraUtilities.scoreCompare(scores[i], false)) {
                         //Robot.cameraSystem.latestScores = scores[i];
+                        Robot.cameraSystem.goalNumber = 2;
                         System.out.println("particle: " + i + " is a High Goal\ncenterX: " + report.center_mass_x_normalized + "\ncenterY: " + report.center_mass_y_normalized);
                         System.out.println("Distance: " + CameraUtilities.computeDistance(thresholdImage, report, i, false));
                     } else if (CameraUtilities.scoreCompare(scores[i], true)) {
                         //Robot.cameraSystem.latestScores = scores[i];
+                        Robot.cameraSystem.goalNumber = 1;
                         System.out.println("particle: " + i + " is a Middle Goal \ncenterX: " + report.center_mass_x_normalized + "\ncenterY: " + report.center_mass_y_normalized);
                         System.out.println("Distance: " + CameraUtilities.computeDistance(thresholdImage, report, i, true));
                     } else {
                         //if (Log.verbose()) {//TODO change this back to log.verbose
+                        Robot.cameraSystem.goalNumber = 0;
                         Log.log("particle: " + i + " is not a goal\ncenterX: " + report.center_mass_x_normalized + "\ncenterY: " + report.center_mass_y_normalized);
                         //}
                     }
@@ -114,18 +117,18 @@ public class findRectangle extends Command {
 
             }
         }
-        //end = true;
-        counter++;
+        end = true;
+        //counter++;
     }
 // Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {
-        //return end;
-        if (counter == 5) {
-            return true;
-        } else {
-            return false;
-        }
+        return end;
+        //if (counter == 5) {
+          //  return true;
+        //} else {
+          //  return false;
+        //}
     }
 
     // Called once after isFinished returns true
