@@ -51,7 +51,7 @@ public class findRectangle extends Command {
                  *
                  */
                 ColorImage image = Robot.cameraSystem.camera.getImage();     // comment if using stored images
-                BinaryImage thresholdImage = image.thresholdHSL(60, 150, 0, 50, 190, 255);   // keep only red objects
+                BinaryImage thresholdImage = image.thresholdHSL(0, 250, 0, 60, 200, 255);   // keep only red objects  THE RANGE IS FINE DO NOT TOUCH
                 //thresholdImage.write("/threshold.bmp");
                 BinaryImage convexHullImage = thresholdImage.convexHull(false); // fill in occluded rectangles
                 //convexHullImage.write("/convexHull.bmp");
@@ -62,6 +62,7 @@ public class findRectangle extends Command {
                 Scores scores[] = new Scores[filteredImage.getNumberParticles()];
                 for (int i = 0; i < scores.length; i++) {
                     ParticleAnalysisReport report = filteredImage.getParticleAnalysisReport(i);
+                    Robot.cameraSystem.latestReport = report;
                     scores[i] = new Scores();
 
                     scores[i].rectangularity = CameraUtilities.scoreRectangularity(report);

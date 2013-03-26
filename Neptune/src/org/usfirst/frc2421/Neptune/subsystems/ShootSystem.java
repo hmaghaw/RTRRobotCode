@@ -21,6 +21,9 @@ public class ShootSystem extends Subsystem {
     public int direction = -1; // wether the motors spin forward (1) or backward (-1)
     public double speedSeparation = .15; //percent the front wheel spins faster than the back wheel 
     public double angle;    //current angle of the shooter Needs to be implemented
+    public double upperLimit = 70;
+    public double lowerLimit = 0;
+    
     //initialize shooter wheels
     public CANJaguar frontWheel = RobotMap.outerShooterWheel;
     public CANJaguar backWheel = RobotMap.innerShooterWheel;

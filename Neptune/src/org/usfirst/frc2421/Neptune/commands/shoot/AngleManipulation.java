@@ -8,20 +8,20 @@ import org.usfirst.frc2421.Neptune.Robot;
  */
 public class AngleManipulation extends Command {
 
+    private double angle;
+    private double joystickValue;
+    private double lowerLimit, upperLimit;
+    
     public AngleManipulation() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);	
         requires(Robot.shootSystem);
     }
-    private double angle;
-    private double joystickValue;
-    private double lowerLimit, upperLimit;
     
     // Called just before this Command runs the first time
     protected void initialize() {
-        angle = Robot.shootSystem.getCurrentAngle();
-        upperLimit = 70;
-        lowerLimit = 0;
+        lowerLimit = Robot.shootSystem.lowerLimit;
+        upperLimit = Robot.shootSystem.upperLimit;
     }
 
     // Called repeatedly when this Command is scheduled to run

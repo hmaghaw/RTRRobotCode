@@ -20,7 +20,7 @@ public class OI {
     public JoystickButton brake, speedToggle;
     //Shooting Control Objects
     public Joystick shooterStick;
-    public JoystickButton shootActivate, shootDeactivate, shooterAngleIncrease, shooterAngleDecrease, shootSpeedUp, shootSpeedDown;
+    public JoystickButton autoAimButton, shootActivate, shootDeactivate, shooterAngleIncrease, shooterAngleDecrease, shootSpeedUp, shootSpeedDown;
     public JoystickButton loadDiskButton, findRect;
     private final JoystickButton turnLightOff;
     private final JoystickButton turnLightOn;
@@ -32,14 +32,11 @@ public class OI {
         findRect = new JoystickButton(shooterStick, 8);
         findRect.whenPressed(new findRectangle());
         
-        shooterAngleDecrease = new JoystickButton(shooterStick, 10);
-        shooterAngleDecrease.whileHeld(new AngleDecrease());
-
-        shooterAngleIncrease = new JoystickButton(shooterStick, 11);
-        shooterAngleIncrease.whileHeld(new AngleIncrease());
-
         shootDeactivate = new JoystickButton(shooterStick, 2);
         shootDeactivate.whenPressed(new ShooterEnginesStop());
+        
+        autoAimButton = new JoystickButton(shooterStick, 9);
+        autoAimButton.whenPressed(new AutoAim());
 
         shootActivate = new JoystickButton(shooterStick, 3);
         shootActivate.whenPressed(new ShooterEnginesGo());
@@ -74,8 +71,6 @@ public class OI {
         SmartDashboard.putData("turnRight", new TurnRight());
         SmartDashboard.putData("toggleSpeed", new DriveSpeedUp());
         SmartDashboard.putData("loadFrisbee", new loadFrisbee());
-        SmartDashboard.putData("angleIncrease", new AngleIncrease());
-        SmartDashboard.putData("angleDecrease", new AngleDecrease());
         SmartDashboard.putData("shooterEnginesStop", new ShooterEnginesStop());
         SmartDashboard.putData("shooterEnginesGo", new ShooterEnginesGo());
         SmartDashboard.putData("shooterSlowDown", new ShooterSlowDown());
