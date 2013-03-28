@@ -28,12 +28,6 @@ public class OI {
         // Shooting Control Setup
         shooterStick = new Joystick(1);
 
-        shooterAngleDecrease = new JoystickButton(shooterStick, 10);
-        shooterAngleDecrease.whileHeld(new AngleDecrease());
-
-        shooterAngleIncrease = new JoystickButton(shooterStick, 11);
-        shooterAngleIncrease.whileHeld(new AngleIncrease());
-
         shootDeactivate = new JoystickButton(shooterStick, 2);
         shootDeactivate.whenPressed(new ShooterEnginesStop());
 
@@ -70,8 +64,6 @@ public class OI {
         SmartDashboard.putData("turnRight", new TurnRight());
         SmartDashboard.putData("toggleSpeed", new DriveSpeedUp());
         SmartDashboard.putData("loadFrisbee", new loadFrisbee());
-        SmartDashboard.putData("angleIncrease", new AngleIncrease());
-        SmartDashboard.putData("angleDecrease", new AngleDecrease());
         SmartDashboard.putData("shooterEnginesStop", new ShooterEnginesStop());
         SmartDashboard.putData("shooterEnginesGo", new ShooterEnginesGo());
         SmartDashboard.putData("shooterSlowDown", new ShooterSlowDown());

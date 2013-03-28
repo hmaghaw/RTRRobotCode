@@ -43,7 +43,7 @@ public class findRectangle extends Command{
                  *
                  */
                 ColorImage image = Robot.cameraSystem.camera.getImage();     // comment if using stored images
-                BinaryImage thresholdImage = image.thresholdHSV(60, 150, 90, 255, 20, 255);   // keep only red objects
+                BinaryImage thresholdImage = image.thresholdHSV(0, 250, 0, 60, 200, 255);   // keep only red objects
                 BinaryImage convexHullImage = thresholdImage.convexHull(false);          // fill in occluded rectangles
                 BinaryImage filteredImage = convexHullImage.particleFilter(Robot.cameraSystem.cc);           // filter out small particles
 
