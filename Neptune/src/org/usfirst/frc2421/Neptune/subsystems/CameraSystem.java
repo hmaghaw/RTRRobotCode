@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.image.CriteriaCollection;
 import edu.wpi.first.wpilibj.image.NIVision.MeasurementType;
+import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.tables.ITable;
 import org.usfirst.frc2421.Neptune.RobotMap;
 import org.usfirst.frc2421.Neptune.utils.RobotUtils;
@@ -19,6 +20,11 @@ public class CameraSystem extends Subsystem {
     public final CriteriaCollection cc;
     public Scores latestScores;
     public Relay lightRelay;
+    public ParticleAnalysisReport latestReport;
+    
+    public int goalnumber;
+    public String goalString;
+    
 
     public CameraSystem() {
         camera = RobotMap.camera;  // get an instance of the camera
